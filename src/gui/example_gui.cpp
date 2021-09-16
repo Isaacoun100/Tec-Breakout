@@ -1,13 +1,16 @@
-#include <iostream>
+//
+// Created by carlo on 16/9/21.
+//
 
 #include "SDL.h"
-#include <SDL2/SDL.h>
 #include <cstdio>
+#include "example_gui.h"
+
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
-int main(int argc, char** argv){
+int firtsGUI(void){
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         printf("Error: SDL failed to initialize\nSDL Error: '%s'\n", SDL_GetError());
         return 1;
@@ -44,6 +47,5 @@ int main(int argc, char** argv){
 
         SDL_RenderPresent(renderer);
     }
-
     return 0;
 }
