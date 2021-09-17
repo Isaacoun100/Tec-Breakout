@@ -44,7 +44,6 @@ int firtsGUI(void){
 
         SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
         SDL_RenderClear(renderer);
-
         SDL_RenderPresent(renderer);
     }
     return 0;
