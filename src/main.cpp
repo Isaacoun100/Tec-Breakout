@@ -1,8 +1,8 @@
 #include "logic/example_logic.h"
-#include "gui/example_gui.h"
-#include "gui/primative_window.h"
-int main(int argc, char** argv) {
-    PrimativeWindow* primative = new PrimativeWindow();
+#include "gui/primitive_window.h"
+int main() {
+    auto *primative = new PrimitiveWindow();
+    primative->run();
     delete primative;
     return 0;
 }
