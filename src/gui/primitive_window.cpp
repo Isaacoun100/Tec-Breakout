@@ -1,21 +1,31 @@
-//
-// Created by carlo on 16/9/21.
-//
+/**
+ * @file primitive_window.cpp
+ * @author Carlos A. Mata C. <carlos.andres12001 @ gmail.com>
+ */
+
 #include "primitive_window.h"
 
+/**
+ * @brief The default constructor.
+ */
 PrimitiveWindow::PrimitiveWindow() {
     SDL_Init(0);
     SDL_CreateWindowAndRenderer(dimensions[0], dimensions[1],
                                 0, &window, &renderer);
 
 
-    char *tmp [title.size() +1];
+    char *tmp [title.size() + 1];
     strcpy(reinterpret_cast<char *>(tmp), title.c_str());
     SDL_SetWindowTitle(window, reinterpret_cast<const char *>(tmp));
-    backgroundColor(0, 255, 255, 255);
+    setBackgroundColor(0, 255, 255, 255);
     loop();
 }
 
+/**
+ * @brief The constructor change with change tittle and dimensions.
+ * @param title Assign the title of the window.
+ * @param dimensions Assign the dimensions of the window.
+ */
 PrimitiveWindow::PrimitiveWindow(string title, int dimensions[]) {
     this->title = std::move(title);
     this->dimensions[0] = dimensions[0];
@@ -23,17 +33,18 @@ PrimitiveWindow::PrimitiveWindow(string title, int dimensions[]) {
     PrimitiveWindow();
 }
 
-PrimitiveWindow::PrimitiveWindow(string title, int dimensions[], bool running) {
-    this->running = running;
-    PrimitiveWindow(title, dimensions);
-}
-
+/**
+ * @brief The destroy method.
+ */
 PrimitiveWindow::~PrimitiveWindow() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
+/**
+ *@brief Is loop of the window.
+ */
 void PrimitiveWindow::loop(){
     while (running){
 
@@ -50,6 +61,9 @@ void PrimitiveWindow::loop(){
     }
 }
 
+/**
+ * @brief The input keys for the window.
+ */
 void PrimitiveWindow::input() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -63,6 +77,9 @@ void PrimitiveWindow::input() {
     }
 }
 
+/**
+ * @brief Render the window and the objects in the window.
+ */
 void PrimitiveWindow::render() {
 
 
@@ -77,20 +94,52 @@ void PrimitiveWindow::render() {
     SDL_RenderPresent(renderer);
 }
 
+/**
+ * @brief Updates the objects and the window.
+ */
 void PrimitiveWindow::update() {
     SDL_UpdateWindowSurface(window);
 }
 
+/**
+ * @brief Runs the window.
+ */
 void PrimitiveWindow::run(){
     this->running = true;
     loop();
 }
 
+/**
+ * @brief Stop run the window.
+ */
 void PrimitiveWindow::stop() {
     this->running = false;
 }
 
-void PrimitiveWindow::backgroundColor(int red, int green, int blue, int transparency){
+/**
+ * @brief Set the backgroundColor.
+ * @param red RGB color red.
+ * @param green RBG color green.
+ * @param blue RGB color blue.
+ * @param transparency RGB transparency.
+ */
+void PrimitiveWindow::setBackgroundColor(int red, int green, int blue, int transparency){
     SDL_SetRenderDrawColor(renderer, red, green, blue, transparency);
     SDL_RenderClear(renderer);
+}
+
+/**
+ * @brief The dimensions of the window.
+ * @return The dimensions of the window.
+ */
+const int *PrimitiveWindow::getDimensions() const {
+    return dimensions;
+}
+
+/**
+ * @brief The title of the window.
+ * @return The title of the window.
+ */
+const string &PrimitiveWindow::getTitle() const {
+    return title;
 }
