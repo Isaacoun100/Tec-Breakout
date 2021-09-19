@@ -9,27 +9,28 @@
  * @brief The default constructor.
  */
 PrimitiveWindow::PrimitiveWindow() {
-    SDL_Init(0);
-    SDL_CreateWindowAndRenderer(dimensions[0], dimensions[1],
+    if(0<SDL_Init(SDL_INIT_EVERYTHING)){cout << "FAIl INIT"<< endl;}
+    SDL_CreateWindowAndRenderer(width, height,
                                 0, &window, &renderer);
 
-
+    TTF_Init();
+    font1 = TTF_OpenFont("font/OpenSans-Light.ttf", FONT_SIZE);
     char *tmp [title.size() + 1];
     strcpy(reinterpret_cast<char *>(tmp), title.c_str());
     SDL_SetWindowTitle(window, reinterpret_cast<const char *>(tmp));
-    setBackgroundColor(0, 255, 255, 255);
     loop();
 }
 
 /**
  * @brief The constructor change with change tittle and dimensions.
  * @param title Assign the title of the window.
- * @param dimensions Assign the dimensions of the window.
+ * @param width Assign the dimension of the window.
+ * @param height Assign the dimension of the window.
  */
-PrimitiveWindow::PrimitiveWindow(string title, int dimensions[]) {
+PrimitiveWindow::PrimitiveWindow(string title, int width, int height) {
     this->title = std::move(title);
-    this->dimensions[0] = dimensions[0];
-    this->dimensions[1] =  dimensions[1];
+    this-width = width;
+    this->height =  height;
     PrimitiveWindow();
 }
 
@@ -37,9 +38,11 @@ PrimitiveWindow::PrimitiveWindow(string title, int dimensions[]) {
  * @brief The destroy method.
  */
 PrimitiveWindow::~PrimitiveWindow() {
+    TTF_CloseFont(font1);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    TTF_Quit();
 }
 
 /**
@@ -47,8 +50,6 @@ PrimitiveWindow::~PrimitiveWindow() {
  */
 void PrimitiveWindow::loop(){
     while (running){
-
-
         lastFrame=SDL_GetTicks();
         static int lastTime;
         if(lastFrame >= (lastTime+1000)) {lastTime=lastFrame; frameCount=0;}
@@ -81,15 +82,13 @@ void PrimitiveWindow::input() {
  * @brief Render the window and the objects in the window.
  */
 void PrimitiveWindow::render() {
+    setBackgroundColor(0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    refresh();
 
+    setBackgroundColor(255, 255, 255, 255);
 
-    //Frames counter
-    frameCount ++;
-    int timerFPS = SDL_GetTicks()-lastFrame;
-    if(timerFPS<(1000/60)) {
-        SDL_Delay((1000/60)-timerFPS);
-    }
-
+    SDL_RenderClear(renderer);
 
     SDL_RenderPresent(renderer);
 }
@@ -115,6 +114,18 @@ void PrimitiveWindow::run(){
 void PrimitiveWindow::stop() {
     this->running = false;
 }
+
+/**
+ * @brief Manage frames task refresh.
+ */
+ void PrimitiveWindow::refresh(){
+    //Frames counter
+    frameCount ++;
+    int timerFPS = SDL_GetTicks()-lastFrame;
+    if(timerFPS<(1000/60)) {
+        SDL_Delay((1000/60)-timerFPS);
+    }
+ }
 
 /**
  * @brief Set the backgroundColor.

@@ -82,7 +82,7 @@ public:
     /**
      * Draw the object.
      * @param o THe object to draw.
-     * @param renderer The render of the window.
+     * @param renderer The renderf of the window.
      */
     static void draw(Object o, SDL_Renderer *renderer);
 };

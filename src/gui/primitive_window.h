@@ -10,10 +10,12 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "SDL2/SDL_ttf.h"
+#define FONT_SIZE 32
 using namespace std;
 
 /**
- * @brief The father of the subclass windows GUI.
+ * @brief The GAME GUI.
  * @author Carlos A. Mata C. <carlos.andres12001 @ gmail.com>
  */
 class PrimitiveWindow{
@@ -24,7 +26,7 @@ protected:
     SDL_Window *window{};
 
     /**
-     * The render of the window.
+     * The renderf of the window.
      */
     SDL_Renderer *renderer{};
 
@@ -38,17 +40,19 @@ protected:
      */
     int lastFrame{};
 
+    TTF_Font *font1;
+
     /**
      * Count the time of the frames.
      */
     int timerFPS{};
 
-    /**
+    virtual /**
      *@brief Is loop of the window.
      */
     void loop();
 
-    /**
+    virtual /**
      * @brief The input keys for the window.
      */
     void input();
@@ -56,12 +60,17 @@ protected:
     /**
      * @brief Updates the objects and the window.
      */
-    void update();
+    virtual void update();
 
-    /**
+    virtual /**
      * @brief Render the window and the objects in the window.
      */
     void render();
+
+    /**
+    * @brief Manage frames task refresh.
+     */
+    void refresh();
 
 public:
     /**
@@ -69,10 +78,9 @@ public:
      */
     bool running = false;
 
-    /*
-     * The dimensions of the window.
-     */
-    int dimensions[2]={500, 500};
+    int width =500;
+
+    int height=500;
 
     /*
      * The title of the window.
@@ -89,7 +97,7 @@ public:
      * @param title Assign the title of the window.
      * @param dimensions Assign the dimensions of the window.
      */
-    PrimitiveWindow(string title, int dimensions[]);
+    PrimitiveWindow(string title, int width, int height);
 
     /**
      * @brief Runs the window.

@@ -4,7 +4,7 @@ project(TecBreakout VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${${PROJECT_NAME}_SOURCE_DIR}/cmake")
 
-add_executable(TecBreakout src/main.cpp src/logic/example_logic.cpp src/logic/example_logic.h src/gui/primitive_window.cpp src/gui/primitive_window.h src/gui/object.cpp src/gui/object.h)
+add_executable(TecBreakout src/main.cpp src/logic/example_logic.cpp src/logic/example_logic.h src/gui/primitive_window.cpp src/gui/primitive_window.h src/gui/object.cpp src/gui/object.h src/gui/game.cpp src/gui/game.h src/gui/text_sdl.cpp src/gui/text_sdl.h src/gui/objectSDL.h)
 
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
