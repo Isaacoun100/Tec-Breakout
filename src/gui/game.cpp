@@ -9,36 +9,40 @@
 
 
 Game::Game() {
-    PrimitiveWindow::initWindow("TecBreakout", 620, 720);
+    PrimitiveWindow::initWindow("TecBreakout",
+                                620, 720);
     PrimitiveWindow::initWindow();
-    bar = Bar(12,width/4,height-width/4-32);
+    bar = Bar(12,height/4,height-height/4-32);
     ball = Ball(16);
-    text1 = TextSDL(std::to_string(liveCount),
-                    width / 2 + FONT_SIZE / 2, FONT_SIZE * 1.5,
+    text1 = TextSDL("LIVES "+  std::to_string(liveCount),
+                    width / 2 + FONT_SIZE / 2+100, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
-    text2 = TextSDL(std::to_string(points),
-                    10, 10,
+    text2 = TextSDL("POINTS "+ std::to_string(points),
+                    width / 2 + FONT_SIZE / 2 -100, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
     text1.setId(idObjects++);
     text2.setId(idObjects++);
     bar.setId(idObjects++);
     ball.setId(idObjects++);
-//    resetGame();
+
+    Brick value = Brick();
+    fill(*matrix_brick, *matrix_brick + ROW*COL, value);
+    resetGame();
 }
 
 void Game::resetGame(){
 
-//    for(int i=0; i<ROW; i++) {
-//        for (int j=0; j<COL; j++){
-//            //Logica de escoger el brick
-//            Brick brick =Brick((width-(SPACING*COL))/COL,
-//                                22, Commun);
-//            brick.setId(idObjects++);
-//            matrix_brick[i][j] = brick;
-//        }
-//    }
+    for(int i=0; i<ROW; i++) {
+        for (int j=0; j<COL; j++){
+            //Logica de escoger el brick
+            Brick brick =Brick((width-(SPACING*COL))/COL,
+                                22, Commun);
+            brick.setId(idObjects++);
+            matrix_brick[i][j] = brick;
+        }
+    }
 
     liveCount=3;
     bar.rect.x=(width/2)-(bar.rect.w/2);
@@ -69,16 +73,17 @@ void Game::render(){
     text2.draw(renderer);
     ball.draw(renderer);
     bar.draw(renderer);
-
-//    for(int i=0; i<ROW; i++) {
-//        for (int j=0; j<COL; j++) {
-//            Brick *b  = &matrix_brick[i][j];
-//            if (b->isAlive && 0<abs(b->hits)) {
-//                setBricks(b, i);
-//                b->draw(renderer);
-//            }
-//        }
-//    }
+    int x = 0;
+    for(int i=0; i<ROW; i++) {
+        for (int j=0; j<COL; j++) {
+            Brick *b  = &matrix_brick[i][j];
+            if (b->isAlive && 0<abs(b->hits)) {
+                setBricks(b, x);
+                b->draw(renderer);
+            }
+            x++;
+        }
+    }
 
     SDL_RenderPresent(renderer);
 }
@@ -87,7 +92,7 @@ void Game::input() {
     SDL_Event e;
     const Uint8 *keyboardState = SDL_GetKeyboardState(nullptr);
     while(SDL_PollEvent(&e)){
-        if(e.type==SDL_QUIT) {running=false;}
+        if(e.type==SDL_QUIT) {stop();}
     }
 
     if(keyboardState[SDL_SCANCODE_LEFT]) {bar.rect.x -= bar.speed;}
@@ -120,41 +125,41 @@ void Game::update() {
     if(bar.rect.x+bar.rect.w>width) {bar.rect.x=width-bar.rect.w;}
 
     bool reset = false;
-//    for(int i=0; i<ROW; i++) {
-//        for (int j = 0; j < COL; j++) {
-//            Brick *brick = &matrix_brick[i][j];
-//            if (SDL_HasIntersection(&(ball.rect), &(brick->rect))) {
-//                if (brick->hits-1 == 0){
-//                    //Logica de para diferenytes bloques
-//                    brick->hits -= 1;
-//                    brick->isAlive = false;
-//                    brick->isFront = false;
-//                    points += brick->hits;
-//                }
-//                if (ball.rect.x >= brick->rect.x) {
-//                    velX = -velX;
-//                    ball.rect.x -= 20;
-//                }
-//                if (ball.rect.x <= brick->rect.x) {
-//                    velX = -velX;
-//                    ball.rect.x += 20;
-//                }
-//                if (ball.rect.y <= brick->rect.y) {
-//                    velY = -velY;
-//                    ball.rect.y -= 20;
-//                }
-//                if (ball.rect.y >= brick->rect.y) {
-//                    velY = -velY;
-//                    ball.rect.y += 20;
-//                }
-//            }
-//            if (brick->isAlive) { reset = false; }
-//        }
-//    }
-//    if(reset) { resetGame();}
+    for(int i=0; i<ROW; i++) {
+        for (int j = 0; j < COL; j++) {
+            Brick *brick = &matrix_brick[i][j];
+            if (SDL_HasIntersection(&(ball.rect), &(brick->rect))) {
+                if (brick->hits-1 == 0){
+                    //Logica de para diferenytes bloques
+                    brick->hits -= 1;
+                    brick->isAlive = false;
+                    brick->isFront = false;
+                    points += brick->hits;
+                }
+                if (ball.rect.x >= brick->rect.x) {
+                    velX = -velX;
+                    ball.rect.x -= 20;
+                }
+                if (ball.rect.x <= brick->rect.x) {
+                    velX = -velX;
+                    ball.rect.x += 20;
+                }
+                if (ball.rect.y <= brick->rect.y) {
+                    velY = -velY;
+                    ball.rect.y -= 20;
+                }
+                if (ball.rect.y >= brick->rect.y) {
+                    velY = -velY;
+                    ball.rect.y += 20;
+                }
+            }
+            if (brick->isAlive) { reset = false; }
+        }
+    }
+    if(reset) { resetGame();}
 
-    text1.setText(to_string(liveCount));
-    text2.setText(to_string(points));
+    text1.setText("LIVES "+  std::to_string(liveCount));
+    text2.setText("POINTS "+ std::to_string(points));
 }
 
 void Game::setBricks(Brick *brick, int i) {

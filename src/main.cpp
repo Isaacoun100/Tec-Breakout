@@ -1,9 +1,10 @@
-#include "gui/primitive_window.h"
 
+
+
+#include "gui/game.h"
 
 int main() {
-    auto v = new PrimitiveWindow();
-    v->initWindow();
-    v->run();
-    delete v;
+    auto game = new Game();
+    game->run();
+    delete game;
 }
