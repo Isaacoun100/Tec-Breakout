@@ -6,13 +6,7 @@
 
 #ifndef TEC_BREAKOUT_PRIMATIVE_WINDOW_H
 #define TEC_BREAKOUT_PRIMATIVE_WINDOW_H
-#include <string>
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include "SDL2/SDL_ttf.h"
-#define FONT_SIZE 32
-using namespace std;
+#include "include_sdl.h"
 
 /**
  * @brief The GAME GUI.

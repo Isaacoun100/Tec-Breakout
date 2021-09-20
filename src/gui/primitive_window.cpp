@@ -29,7 +29,7 @@ PrimitiveWindow::PrimitiveWindow() {
  */
 PrimitiveWindow::PrimitiveWindow(string title, int width, int height) {
     this->title = std::move(title);
-    this-width = width;
+    this->width = width;
     this->height =  height;
     PrimitiveWindow();
 }
@@ -139,13 +139,7 @@ void PrimitiveWindow::setBackgroundColor(int red, int green, int blue, int trans
     SDL_RenderClear(renderer);
 }
 
-/**
- * @brief The dimensions of the window.
- * @return The dimensions of the window.
- */
-const int *PrimitiveWindow::getDimensions() const {
-    return dimensions;
-}
+
 
 /**
  * @brief The title of the window.
