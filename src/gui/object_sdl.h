@@ -2,8 +2,9 @@
 // Created by carlo on 18/9/21.
 //
 
-#ifndef TECBREAKOUT_OBJECTSDL_H
-#define TECBREAKOUT_OBJECTSDL_H
+#ifndef TECBREAKOUT_OBJECT_SDL_H
+#define TECBREAKOUT_OBJECT_SDL_H
+#include "SDL2/SDL.h"
 
 class ObjectSDL{
 private:
@@ -16,4 +17,4 @@ public:
 };
 
 
-#endif //TECBREAKOUT_OBJECTSDL_H
+#endif //TECBREAKOUT_OBJECT_SDL_H

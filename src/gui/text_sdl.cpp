@@ -36,6 +36,11 @@ void TextSDL::setColor(int red, int green, int blue) {
 }
 
 void TextSDL::draw(SDL_Renderer *renderer) {
+    SDL_SetRenderDrawColor(renderer,
+                           0,
+                           0,
+                           0,
+                           255);
     SDL_Surface *surface;
     SDL_Texture *texture;
     const char* t=text.c_str();

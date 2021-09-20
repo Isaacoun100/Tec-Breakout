@@ -5,14 +5,13 @@
 #ifndef TECBREAKOUT_TEXT_SDL_H
 #define TECBREAKOUT_TEXT_SDL_H
 
-#include <string>
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include "object_sdl.h"
+#include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
-#include "objectSDL.h"
+#include "string"
+
 using namespace std;
-#define FONT_SIZE 32
+
 
 class TextSDL:public ObjectSDL{
 public:
