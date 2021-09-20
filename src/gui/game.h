@@ -31,15 +31,15 @@ public:
 
     float velX = 0;
 
-    Bar bar = {};
+    Bar bar;
 
-    Ball ball = {};
+    Ball ball;
 
-    Brick matrix_brick[ROW][COL] ={};
+    Brick matrix_brick[ROW][COL];
 
-    TextSDL text1= {};
+    TextSDL text1;
 
-    TextSDL text2={};
+    TextSDL text2;
 
 
 
