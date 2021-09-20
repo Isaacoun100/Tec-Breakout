@@ -15,6 +15,8 @@ using namespace std;
 
 class TextSDL:public ObjectSDL{
 public:
+    TextSDL();
+
     string text;
     SDL_Rect rect;
     int x;

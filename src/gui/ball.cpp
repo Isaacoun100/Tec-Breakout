@@ -6,3 +6,7 @@
 Ball::Ball(int size) {
     this->size = rect.h = rect.w = size;
 }
+
+Ball::Ball() {
+
+}

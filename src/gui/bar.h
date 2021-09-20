@@ -10,6 +10,8 @@
 
 class Bar: public EntitySDL{
 public:
+    Bar();
+
     int speed = 9;
 
     Bar(int w, int h, int y);

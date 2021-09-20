@@ -89,14 +89,14 @@ public:
     /**
      * @brief The default constructor.
      */
-    PrimitiveWindow();
+    void initWindow();
 
     /**
      * @brief The constructor change with change tittle and dimensions.
      * @param title Assign the title of the window.
      * @param dimensions Assign the dimensions of the window.
      */
-    PrimitiveWindow(string title, int width, int height);
+    void initWindow(string title, int width, int height);
 
     /**
      * @brief Runs the window.

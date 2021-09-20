@@ -8,7 +8,7 @@
 /**
  * @brief The default constructor.
  */
-PrimitiveWindow::PrimitiveWindow() {
+ void PrimitiveWindow::initWindow() {
     if(0<SDL_Init(SDL_INIT_EVERYTHING)){cout << "FAIl INIT"<< endl;}
     SDL_CreateWindowAndRenderer(width, height,
                                 0, &window, &renderer);
@@ -18,7 +18,6 @@ PrimitiveWindow::PrimitiveWindow() {
     char *tmp [title.size() + 1];
     strcpy(reinterpret_cast<char *>(tmp), title.c_str());
     SDL_SetWindowTitle(window, reinterpret_cast<const char *>(tmp));
-    loop();
 }
 
 /**
@@ -27,11 +26,10 @@ PrimitiveWindow::PrimitiveWindow() {
  * @param width Assign the dimension of the window.
  * @param height Assign the dimension of the window.
  */
-PrimitiveWindow::PrimitiveWindow(string title, int width, int height) {
+void PrimitiveWindow::initWindow(string title, int width, int height) {
     this->title = std::move(title);
     this->width = width;
     this->height =  height;
-    PrimitiveWindow();
 }
 
 /**

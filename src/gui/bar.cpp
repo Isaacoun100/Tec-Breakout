@@ -9,3 +9,7 @@ Bar::Bar(int w, int h, int y) {
     this->rect.h = h;
     this->rect.y= y;
 }
+
+Bar::Bar() {
+
+}

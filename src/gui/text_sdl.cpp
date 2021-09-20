@@ -56,3 +56,7 @@ void TextSDL::draw(SDL_Renderer *renderer) {
 }
 
 TextSDL::TextSDL(const string &text, int x, int y, int red, int green, int blue, TTF_Font *font) : text(text), x(x), y(y),font(font) { setColor(red, green, blue);}
+
+TextSDL::TextSDL() {
+
+}

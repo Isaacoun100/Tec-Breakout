@@ -8,8 +8,8 @@ add_executable(TecBreakout src/main.cpp
         src/gui/primitive_window.cpp
         src/gui/primitive_window.h
 
-        #src/gui/game.cpp
-       # src/gui/game.h
+        src/gui/game.cpp
+        src/gui/game.h
         src/gui/text_sdl.cpp
         src/gui/text_sdl.h
         src/gui/object_sdl.h

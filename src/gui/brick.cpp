@@ -53,3 +53,6 @@ void Brick::setFeatureBrick(){
         color.blue = 196;
     }
 }
+
+Brick::Brick() {
+}

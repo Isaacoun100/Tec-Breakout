@@ -10,6 +10,8 @@
 class Ball: public EntitySDL{
 public:
 
+    Ball();
+
     int deep = 0;
 
     int speed = 8;

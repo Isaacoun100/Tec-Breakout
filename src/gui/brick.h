@@ -20,6 +20,8 @@ enum typeBrick{
 
 class Brick: public EntitySDL{
 public:
+    Brick();
+
     typeBrick type;
     int value{};
     int hits{};
