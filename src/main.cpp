@@ -18,5 +18,16 @@ int main(int argc, char** argv){
     pthread_create(&newThread, 0 , initiateCommunication, NULL);
     pthread_detach(newThread);
 
+    string check = "Connected successfully";
+
+    while(true){
+        string msg;
+        cin >> msg;
+        if(msg == "salir") break;
+        communication ->setMessage(msg.c_str());
+    }
+
+    delete communication;
     return 0;
+
 }
