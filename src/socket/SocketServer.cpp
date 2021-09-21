@@ -1,7 +1,3 @@
-//
-// Created by isaac-linux on 19/9/21.
-//
-
 #include "SocketServer.h"
 
 
@@ -34,7 +30,7 @@ void SocketServer::run() {
     while(true){
         dataSocket data;
         socklen_t t = sizeof(data.info);
-        cout<<"Waiting for client to connect"<<endl;
+        cout<<"Waiting for client to connectServer"<<endl;
         data.identifier = accept(identifier, (sockaddr *)&data.info, &t);
         if(data.identifier<0){
             cout << "There was an error while trying to accept the client" << endl;
@@ -66,7 +62,12 @@ void * SocketServer::clientManager(void *obj) {
             if(bytes<1024) break;
         }
         cout<<message<<endl;
+        if(message=="salir") break;
     }
+
+    close(data->identifier);
+    pthread_exit(nullptr);
+
 }
 
 void SocketServer::setMessage(const char *msn) {
