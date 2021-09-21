@@ -5,7 +5,8 @@
 SocketServer* communication;
 void * initiateCommunication(void *){
     try {communication->run();}
-    catch (string ex) {cout<<ex<<endl;}
+    catch (exception& e) {cerr<<e.what()<<'\n';}
+    return nullptr;
 }
 
 int main(int argc, char** argv){
