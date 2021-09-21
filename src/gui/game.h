@@ -55,6 +55,10 @@ public:
     void update() override;
 
     void setBricks(Brick *brick,int i);
+
+    bool moveToRightBar();
+
+    bool moveToLeftBar();
 };
 
 

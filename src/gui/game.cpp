@@ -10,7 +10,7 @@
 
 Game::Game() {
     PrimitiveWindow::initWindow("TecBreakout",
-                                620, 720);
+                                1500, 1000);
     PrimitiveWindow::initWindow();
     bar = Bar(width/4,14,height-height/16);
     ball = Ball(16);
@@ -95,12 +95,12 @@ void Game::input() {
         if(e.type==SDL_QUIT) {stop();}
     }
 
-    if(keyboardState[SDL_SCANCODE_LEFT]&&bar.rect.x -bar.speed > 0) {
-        bar.rect.x -= bar.speed;
+    if(keyboardState[SDL_SCANCODE_LEFT]) {
+        moveToLeftBar();
     }
 
-    if(keyboardState[SDL_SCANCODE_RIGHT]&& bar.rect.x+bar.rect.w<width-10) {
-        bar.rect.x+=bar.speed;
+    if(keyboardState[SDL_SCANCODE_RIGHT]){
+        moveToRightBar();
     }
 }
 
@@ -169,3 +169,19 @@ void Game::setBricks(Brick *brick, int i) {
     brick->rect.x=(((i%COL)+1)*SPACING)+((i%COL)*brick->rect.w)-(SPACING/2);
     brick->rect.y=brick->rect.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*brick->rect.h)-(SPACING/2);
 }
+
+bool Game::moveToRightBar(){
+    bool condition = bar.rect.x -bar.speed > 0;
+    if(condition) {
+        bar.rect.x += bar.speed;
+    }
+    return condition;
+}
+bool Game::moveToLeftBar(){
+    bool condition = bar.rect.x+bar.rect.w<width-10;
+    if (condition){
+        bar.rect.x-=bar.speed;
+    }
+    return condition;
+}
+
