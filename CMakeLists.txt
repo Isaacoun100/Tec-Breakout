@@ -11,6 +11,6 @@ add_executable(Tec-Breakout src/main.cpp src/gui/example_gui.cpp src/logic/examp
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
-SET(CMAKE_CXX_FLAGS -pthread)
+set(CMAKE_CXX_FLAGS -pthread)
 
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} )
