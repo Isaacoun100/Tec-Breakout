@@ -58,6 +58,7 @@ void * SocketServer::clientManager(void *obj) {
         while(true){
             memset(buffer, 0, 1024);
             int bytes = recv(data->identifier, buffer, 1024, 0);
+            message.append(buffer,bytes);
             if(bytes<=0){
                 close(data->identifier);
                 pthread_exit(0);
