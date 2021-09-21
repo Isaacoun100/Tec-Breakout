@@ -67,11 +67,8 @@ void * SocketServer::clientManager(void *obj) {
         }
         cout<<message<<endl;
     }
-    close(data->identifier);
-    pthread_exit(nullptr);
 }
 
 void SocketServer::setMessage(const char *msn) {
-    for(int i : client)
-        send(i,msn, strlen(msn),0);
+    send(4,msn, strlen(msn),0);
 }
