@@ -10,9 +10,9 @@
 
 Game::Game() {
     PrimitiveWindow::initWindow("TecBreakout",
-                                620, 720);
+                                1500, 1000);
     PrimitiveWindow::initWindow();
-    bar = Bar(12,height/4,height-height/4-32);
+    bar = Bar(width/4,14,height-height/16);
     ball = Ball(16);
     text1 = TextSDL("LIVES "+  std::to_string(liveCount),
                     width / 2 + FONT_SIZE / 2+100, FONT_SIZE * 1.5,
@@ -44,7 +44,6 @@ void Game::resetGame(){
         }
     }
 
-    liveCount=3;
     bar.rect.x=(width/2)-(bar.rect.w/2);
     ball.rect.y = bar.rect.y-(bar.rect.h*4);
     velY= ball.speed /2;
@@ -73,13 +72,14 @@ void Game::render(){
     text2.draw(renderer);
     ball.draw(renderer);
     bar.draw(renderer);
+
     int x = 0;
     for(int i=0; i<ROW; i++) {
         for (int j=0; j<COL; j++) {
-            Brick *b  = &matrix_brick[i][j];
-            if (b->isAlive && 0<abs(b->hits)) {
-                setBricks(b, x);
-                b->draw(renderer);
+            Brick *brick  = &matrix_brick[i][j];;
+            if (brick->isAlive && 0 < abs(brick->hits)) {
+                setBricks(brick, x);
+                brick->draw(renderer);
             }
             x++;
         }
@@ -95,9 +95,13 @@ void Game::input() {
         if(e.type==SDL_QUIT) {stop();}
     }
 
-    if(keyboardState[SDL_SCANCODE_LEFT]) {bar.rect.x -= bar.speed;}
+    if(keyboardState[SDL_SCANCODE_LEFT]) {
+        moveToLeftBar();
+    }
 
-    if(keyboardState[SDL_SCANCODE_RIGHT]) {bar.rect.x+=bar.speed;}
+    if(keyboardState[SDL_SCANCODE_RIGHT]){
+        moveToRightBar();
+    }
 }
 
 void Game::update() {
@@ -120,21 +124,20 @@ void Game::update() {
     ball.rect.x+=velX;
     ball.rect.y+=velY;
 
-    if(bar.rect.x<0) {ball.rect.x=0;}
 
-    if(bar.rect.x+bar.rect.w>width) {bar.rect.x=width-bar.rect.w;}
 
-    bool reset = false;
+    bool reset = true;
     for(int i=0; i<ROW; i++) {
         for (int j = 0; j < COL; j++) {
             Brick *brick = &matrix_brick[i][j];
-            if (SDL_HasIntersection(&(ball.rect), &(brick->rect))) {
+            if (SDL_HasIntersection(&(ball.rect),
+                                    &(brick->rect))&&brick->isAlive) {
                 if (brick->hits-1 == 0){
                     //Logica de para diferenytes bloques
                     brick->hits -= 1;
                     brick->isAlive = false;
                     brick->isFront = false;
-                    points += brick->hits;
+                    points += brick->value;
                 }
                 if (ball.rect.x >= brick->rect.x) {
                     velX = -velX;
@@ -166,3 +169,19 @@ void Game::setBricks(Brick *brick, int i) {
     brick->rect.x=(((i%COL)+1)*SPACING)+((i%COL)*brick->rect.w)-(SPACING/2);
     brick->rect.y=brick->rect.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*brick->rect.h)-(SPACING/2);
 }
+
+bool Game::moveToRightBar(){
+    bool condition = bar.rect.x -bar.speed > 0;
+    if(condition) {
+        bar.rect.x += bar.speed;
+    }
+    return condition;
+}
+bool Game::moveToLeftBar(){
+    bool condition = bar.rect.x+bar.rect.w<width-10;
+    if (condition){
+        bar.rect.x-=bar.speed;
+    }
+    return condition;
+}
+

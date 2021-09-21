@@ -7,7 +7,6 @@
 
 
 #include "primitive_window.h"
-//#include "include_sdl.h"
 #include "bar.h"
 #include "brick.h"
 #include "ball.h"
@@ -16,10 +15,10 @@
 class Game:public PrimitiveWindow{
 public:
 
-    static const int PI = 3.14;
+    constexpr static const double PI = 3.14159265358979323846;
     static const int COL = 7;
     static const int ROW = 5;
-    static const int SPACING = 16;
+    static const int SPACING = 10;
 
     int liveCount = 3;
 
@@ -56,6 +55,10 @@ public:
     void update() override;
 
     void setBricks(Brick *brick,int i);
+
+    bool moveToRightBar();
+
+    bool moveToLeftBar();
 };
 
 
