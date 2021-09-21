@@ -29,10 +29,10 @@ void TextSDL::setY(int y) {
 }
 
 void TextSDL::setColor(int red, int green, int blue) {
-    this->color.a = red;
+    this->color.r = red;
     this->color.g = green;
     this->color.b = blue;
-    this->color.r = 255;
+    this->color.a = 255;
 }
 
 void TextSDL::draw(SDL_Renderer *renderer) {
