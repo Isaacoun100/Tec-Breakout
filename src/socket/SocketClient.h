@@ -17,10 +17,17 @@ using namespace std;
 class SocketClient {
 public:
     SocketClient();
-    void connectServer();
+
+    int serverSocket;
+    string ipAddress;
+
+    void setServerSocket(int serverSocket);
+    void setIpAddress(string ipAddress);
     void setMessage(const char* msn);
+    void connectServer();
 
 private:
+
     int identifier;
     sockaddr_in info;
 
