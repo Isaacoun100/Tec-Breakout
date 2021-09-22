@@ -20,7 +20,7 @@ public:
     static const int ROW = 5;
     static const int SPACING = 10;
 
-    int liveCount = 3;
+    int liveCount = 5;
 
     int points = 0;
 
@@ -58,11 +58,17 @@ public:
 
     bool moveToLeftBar();
 
-    void run();
+    void run() override ;
 
     TextSDL text3;
     TextSDL text4;
     int antiBugs;
+    TextSDL text5;
+
+    void surpriseEvent(int *num);
+
+    int counter;
+    bool recoverEvent = false;
 };
 
 

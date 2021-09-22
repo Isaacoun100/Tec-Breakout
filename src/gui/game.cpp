@@ -31,7 +31,7 @@ void Game::resetGame(){
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
-            randomNum =     rand() % (1+Deep - Commun) +Commun;
+            randomNum = rand() % (1+Deep - Commun) +Commun;
 
             for (int x = ROW-1; 1<=x; x--){
                 if(deepBricks[x][j]&&i<x){
@@ -74,7 +74,7 @@ void Game::loop() {
     while(running) {
         lastFrame=SDL_GetTicks();
         static int lastTime;
-        if(lastFrame >= (lastTime+1000)) {lastTime=lastFrame; frameCount=0;}
+        if(lastFrame >= (lastTime+1000)) {lastTime=lastFrame; frameCount=0; counter++;}
         update();
         input();
         render();
@@ -86,23 +86,31 @@ void Game::run(){
     bar = Bar(width/4,14,height-height/16);
     ball = Ball(16);
     text1 = TextSDL("LIVES "+  std::to_string(liveCount),
-                    width / 2 + FONT_SIZE / 2+100, FONT_SIZE * 1.5,
+                    width / 2 + FONT_SIZE / 2+150, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
     text2 = TextSDL("POINTS "+ std::to_string(points),
-                    width / 2 + FONT_SIZE / 2 -100, FONT_SIZE * 1.5,
+                    width / 2 + FONT_SIZE / 2+25, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
     text3 =TextSDL("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep) +")",
-                   width / 2 + FONT_SIZE / 2 -250, FONT_SIZE * 1.5,
+                   width / 2 + FONT_SIZE / 2 -150, FONT_SIZE * 1.5,
                    0, 0, 0, font1);
 
     text4 = TextSDL("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")" ,
                     width / 2 + FONT_SIZE / 2 +600, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
+    text5 = TextSDL("Last surprise was ",
+                    width / 2 + FONT_SIZE / 2 -425, FONT_SIZE * 1.5,
+                    0, 197, 172, font1);
+
     text1.setId(idObjects++);
     text2.setId(idObjects++);
+    text3.setId(idObjects++);
+    text4.setId(idObjects++);
+    text5.setId(idObjects++);
+
     bar.setId(idObjects++);
     ball.setId(idObjects++);
 
@@ -122,6 +130,7 @@ void Game::render(){
     text2.draw(renderer);
     text3.draw(renderer);
     text4.draw(renderer);
+    text5.draw(renderer);
 
     ball.draw(renderer);
     bar.draw(renderer);
@@ -160,8 +169,8 @@ void Game::update() {
     if(liveCount<=0) {stop();}
 
     if(SDL_HasIntersection(&(ball.rect), &(bar.rect))) {
-        double rel=(bar.rect.x+(bar.rect.w/2))-(ball.rect.x+(ball.size/2));
-        double norm=rel/(bar.rect.w/2);
+        double rel=(bar.rect.x+(width/4/2))-(ball.rect.x+(ball.size/2));
+        double norm=rel/(width/4/2);
         double bounce = norm* (5*PI/12);
         velY=-ball.speed*cos(bounce);
         velX=ball.speed*-sin(bounce);
@@ -172,15 +181,28 @@ void Game::update() {
         velY=-velY;
         antiBugs ++;
         if (antiBugs> 20){
-            ball.rect.y = height-height/16;
+            ball.rect.y = height-height/2;
             antiBugs = 0;
         }
     }else{
         antiBugs = 0;
     }
 
-
-    if(ball.rect.y+ball.size>=height) {velY=-velY;liveCount--;}
+    int num =0;
+    if(ball.rect.y+ball.size>=height) {
+        velY=-velY;
+        liveCount--;
+        surpriseEvent(&num);
+    }
+    num = rand() % (1+4 - 0) +0;
+    if(counter%120==0&&counter!=0 ) {
+        if (!recoverEvent) {
+            surpriseEvent(&num);
+            recoverEvent = true;
+        }
+    }else {
+        recoverEvent = false;
+    }
 
     if(ball.rect.x<=0 || ball.rect.x+ball.size>=width) {velX=-velX;}
 
@@ -244,14 +266,12 @@ void Game::update() {
                         brick->isFront = false;
                         points += brick->value;
                     }
-                    int num = rand() % (1+Deep - Commun) +Commun;
+                    int num = rand() % (1+4 - 0) +0;
+                    surpriseEvent(&num);
                 }
                 else if(brick->type==Deep){
                     if(ball.deep%ROW>0){
                         cout <<"Destruyo bloques internos!!" << endl;
-                    }else{
-                        cout <<"SOY un DEEP!!" << endl;
-
                     }
                     ball.deep += 1;
                 }
@@ -265,6 +285,49 @@ void Game::update() {
     text2.setText("POINTS "+ std::to_string(points));
     text3.setText("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep%ROW) +")");
     text4.setText("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")");
+}
+
+void Game::surpriseEvent(int *num){
+    string txt = "";
+    switch (*num) {
+        case 0:
+            bar.rect.w -= bar.rect.w/16;
+            txt = "-width Bar ";
+            if(bar.rect.w<=100){
+                bar.rect.w += 200;
+                txt = "+width Bar ";
+            }
+            break;
+        case 1:
+            bar.rect.w += bar.rect.w/2;
+            txt = "+width Bar ";
+            if(bar.rect.w>=width-100){
+                bar.rect.w -= bar.rect.w/2;
+                txt = "-width Bar ";
+            }
+            break;
+        case 2:
+            ball.speed += 2;
+            txt = "+speed Ball ";
+            if(ball.speed>=20){
+                ball.speed -= 4;
+                txt = "-speed Ball ";
+            }
+            break;
+        case 3:
+            ball.speed -= 1;
+            txt = "-speed Ball ";
+            if(ball.speed<=2){
+                ball.speed = 4;
+                txt = "+speed Ball ";
+            }
+            break;
+        case 4:
+            ball.speed = 8;
+            bar.rect.w = width/4;
+            txt = "Restore    ";
+    }
+    text5.setText("Last surprise was " + txt);
 }
 
 bool Game::moveToRightBar(){

@@ -10,11 +10,11 @@
 #include "SDL_ttf.h"
 #include <string>
 #include <iostream>
-#define FONT_SIZE 28
+#define FONT_SIZE 24
 using namespace std;
 
 /**
- * @brief The GAME GUI.
+ * @brief The Primitive Window for the program.
  * @author Carlos A. Mata C. <carlos.andres12001 @ gmail.com>
  */
 class PrimitiveWindow{
@@ -77,8 +77,14 @@ public:
      */
     bool running = false;
 
+    /**
+     * The width of the window.
+     */
     int width =500;
 
+    /**
+     * The height of the window.
+     */
     int height=500;
 
     /*
@@ -98,7 +104,7 @@ public:
      */
     void initWindow(string title, int width, int height);
 
-    /**
+    virtual /**
      * @brief Runs the window.
      */
     void run();
@@ -122,17 +128,6 @@ public:
      */
     ~PrimitiveWindow();
 
-    /**
-     * @brief The dimensions of the window.
-     * @return The dimensions of the window.
-     */
-    const int *getDimensions() const;
-
-    /**
-     * @brief The title of the window.
-     * @return The title of the window.
-     */
-    const string &getTitle() const;
 };
 
 #endif //TEC_BREAKOUT_PRIMATIVE_WINDOW_H
