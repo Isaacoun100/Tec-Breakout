@@ -1,21 +1,18 @@
 #include "SocketClient.h"
 
+
 SocketClient::SocketClient() {}
+
+void SocketClient::setIpAddress(string ipAddress){ this->ipAddress=ipAddress;}
+void SocketClient::setServerSocket(int serverSocket) { this->serverSocket=serverSocket; }
 
 void SocketClient::connectServer() {
     identifier = socket(AF_INET, SOCK_STREAM,IPPROTO_TCP);
     if(identifier<0) cout<<"Server was not found"<<endl;
     info.sin_family = AF_INET;
-    string ip;
-    int socket;
 
-    cout<< "Please input the ip"<< endl;
-    cin >> ip;
-    info.sin_addr.s_addr = inet_addr(ip.c_str());
-
-    cout<< "Please input the socket"<<endl;
-    cin >> socket;
-    info.sin_port = ntohs(socket);
+    info.sin_addr.s_addr = inet_addr(ipAddress.c_str());
+    info.sin_port = ntohs(serverSocket);
 
     memset(&info.sin_zero , 0, sizeof(info.sin_zero));
 
