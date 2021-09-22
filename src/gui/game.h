@@ -54,13 +54,15 @@ public:
 
     void update() override;
 
-    void setBricks(Brick *brick,int i);
-
     bool moveToRightBar();
 
     bool moveToLeftBar();
 
     void run();
+
+    TextSDL text3;
+    TextSDL text4;
+    int antiBugs;
 };
 
 

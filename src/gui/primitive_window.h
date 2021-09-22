@@ -10,7 +10,7 @@
 #include "SDL_ttf.h"
 #include <string>
 #include <iostream>
-#define FONT_SIZE 32
+#define FONT_SIZE 28
 using namespace std;
 
 /**

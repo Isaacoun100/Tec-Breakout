@@ -31,7 +31,7 @@ void Game::resetGame(){
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
-            randomNum = rand() % (1+Deep - Commun) +Commun;
+            randomNum =     rand() % (1+Deep - Commun) +Commun;
 
             for (int x = ROW-1; 1<=x; x--){
                 if(deepBricks[x][j]&&i<x){
@@ -50,13 +50,14 @@ void Game::resetGame(){
             }
 
 
-
-
             auto typeBrick = static_cast<TypeBrick>(randomNum);
 
             Brick brick =Brick((width-(SPACING*COL))/COL,
                                22, typeBrick);
             brick.setId(idObjects++);
+            if(i==ROW-1){
+                brick.isFront = true;
+            }
             matrixBrick[i][j] = brick;
         }
     }
@@ -92,6 +93,14 @@ void Game::run(){
                     width / 2 + FONT_SIZE / 2 -100, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
+    text3 =TextSDL("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep) +")",
+                   width / 2 + FONT_SIZE / 2 -250, FONT_SIZE * 1.5,
+                   0, 0, 0, font1);
+
+    text4 = TextSDL("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")" ,
+                    width / 2 + FONT_SIZE / 2 +600, FONT_SIZE * 1.5,
+                    0, 0, 0, font1);
+
     text1.setId(idObjects++);
     text2.setId(idObjects++);
     bar.setId(idObjects++);
@@ -111,6 +120,9 @@ void Game::render(){
 
     text1.draw(renderer);
     text2.draw(renderer);
+    text3.draw(renderer);
+    text4.draw(renderer);
+
     ball.draw(renderer);
     bar.draw(renderer);
 
@@ -154,8 +166,19 @@ void Game::update() {
         velY=-ball.speed*cos(bounce);
         velX=ball.speed*-sin(bounce);
     }
+    int i =0, j =0;
+    Brick *brick  = &matrixBrick[i][j];;
+    if(ball.rect.y<=brick->rect.h*3+((i+1)*SPACING)+(i*brick->rect.h)-(SPACING/2)) {
+        velY=-velY;
+        antiBugs ++;
+        if (antiBugs> 20){
+            ball.rect.y = height-height/16;
+            antiBugs = 0;
+        }
+    }else{
+        antiBugs = 0;
+    }
 
-    if(ball.rect.y<=0) {velY=-velY;}
 
     if(ball.rect.y+ball.size>=height) {velY=-velY;liveCount--;}
 
@@ -172,13 +195,7 @@ void Game::update() {
             Brick *brick = &matrixBrick[i][j];
             if (SDL_HasIntersection(&(ball.rect),
                                     &(brick->rect))&&brick->isAlive) {
-                if (brick->hits-1 == 0){
-                    //Logica de para diferenytes bloques
-                    brick->hits -= 1;
-                    brick->isAlive = false;
-                    brick->isFront = false;
-                    points += brick->value;
-                }
+
                 if (ball.rect.x >= brick->rect.x) {
                     velX = -velX;
                     ball.rect.x -= 20;
@@ -195,6 +212,49 @@ void Game::update() {
                     velY = -velY;
                     ball.rect.y += 20;
                 }
+
+                if (brick->type==Commun){
+                    brick->hits -= 1;
+                    if(brick->hits==0){
+                        brick->isAlive = false;
+                        brick->isFront = false;
+                        points += brick->value;
+                    }
+                }
+                else if(brick->type==Double){
+                    brick->hits -= 1;
+                    if(brick->hits==0){
+                        brick->isAlive = false;
+                        brick->isFront = false;
+                        points += brick->value;
+                    }
+                }
+                else if(brick->type==Triple){
+                    brick->hits -= 1;
+                    if(brick->hits==0){
+                        brick->isAlive = false;
+                        brick->isFront = false;
+                        points += brick->value;
+                    }
+                }
+                else if(brick->type==Surprise){
+                    brick->hits -= 1;
+                    if(brick->hits==0){
+                        brick->isAlive = false;
+                        brick->isFront = false;
+                        points += brick->value;
+                    }
+                    int num = rand() % (1+Deep - Commun) +Commun;
+                }
+                else if(brick->type==Deep){
+                    if(ball.deep%ROW>0){
+                        cout <<"Destruyo bloques internos!!" << endl;
+                    }else{
+                        cout <<"SOY un DEEP!!" << endl;
+
+                    }
+                    ball.deep += 1;
+                }
             }
             if (brick->isAlive) { reset = false; }
         }
@@ -203,22 +263,21 @@ void Game::update() {
 
     text1.setText("LIVES "+  std::to_string(liveCount));
     text2.setText("POINTS "+ std::to_string(points));
-}
-
-void Game::setBricks(Brick *brick, int i) {
-    brick->rect.x=(((i%COL)+1)*SPACING)+((i%COL)*brick->rect.w)-(SPACING/2);
-    brick->rect.y=brick->rect.h*3+(((i%ROW)+1)*SPACING)+((i%ROW)*brick->rect.h)-(SPACING/2);
+    text3.setText("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep%ROW) +")");
+    text4.setText("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")");
 }
 
 bool Game::moveToRightBar(){
-    bool condition = bar.rect.x -bar.speed > 0;
+    bool condition = bar.rect.x+bar.rect.w+bar.speed<width-10;
+
     if(condition) {
         bar.rect.x += bar.speed;
     }
     return condition;
 }
+
 bool Game::moveToLeftBar(){
-    bool condition = bar.rect.x+bar.rect.w<width-10;
+    bool condition = bar.rect.x -bar.speed > 10;
     if (condition){
         bar.rect.x-=bar.speed;
     }

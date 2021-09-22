@@ -41,7 +41,7 @@ void Brick::setFeatureBrick(){
     }
     if (type==Inside){
         value = 30;
-        hits = 140;
+        hits = -1;
         color.red = 140;
         color.green = 140;
         color.blue = 140;
