@@ -3,8 +3,15 @@
 
 SocketClient::SocketClient() {}
 
-void SocketClient::setIpAddress(string ipAddress){ this->ipAddress=ipAddress;}
-void SocketClient::setServerSocket(int serverSocket) { this->serverSocket=serverSocket; }
+void SocketClient::setIpAddress(string ipAddress){
+    this->ipAddress=ipAddress;
+    cout<<this->ipAddress;
+
+}
+void SocketClient::setServerSocket(int serverSocket) {
+    this->serverSocket=serverSocket;
+    cout<<this->serverSocket;
+}
 
 void SocketClient::connectServer() {
     identifier = socket(AF_INET, SOCK_STREAM,IPPROTO_TCP);
@@ -12,7 +19,7 @@ void SocketClient::connectServer() {
     info.sin_family = AF_INET;
 
     info.sin_addr.s_addr = inet_addr(ipAddress.c_str());
-    info.sin_port = ntohs(serverSocket);
+    info.sin_port = ntohs((uint16_t)serverSocket);
 
     memset(&info.sin_zero , 0, sizeof(info.sin_zero));
 

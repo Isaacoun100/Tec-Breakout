@@ -11,8 +11,6 @@ void * clientInit(void *){
 
 
     try {
-        clientConnection->setServerSocket(socketPortClient);
-        clientConnection->setIpAddress(ipAddress);
         clientConnection->connectServer();
     }
     catch (exception& e) {
@@ -52,6 +50,8 @@ StartClient::StartClient() {
     else{
         pthread_t serverThread;
         clientConnection = new SocketClient;
+        clientConnection->setServerSocket(socketPortClient);
+        clientConnection->setIpAddress(ipAddress);
         pthread_create(&serverThread, nullptr , clientInit, nullptr);
     }
 
