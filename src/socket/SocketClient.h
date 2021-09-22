@@ -20,7 +20,6 @@ public:
 
     int serverSocket;
     string ipAddress;
-
     void setServerSocket(int serverSocket);
     void setIpAddress(string ipAddress);
     void setMessage(const char* msn);

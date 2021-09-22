@@ -49,13 +49,13 @@ void * SocketClient::listener(void *obj) {
             if(bytes<1024) break;
         }
         cout<<message<<endl;
-        if(message=="salir") break;
+        if(message=="exit") break;
     }
     close(c->identifier);
     pthread_exit(nullptr);
 }
 
 void SocketClient::setMessage(const char *msn) {
-    send(identifier, msn, strlen(msn), 0);
+    send(3, msn, strlen(msn), 0);
 }
 

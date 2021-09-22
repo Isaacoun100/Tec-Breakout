@@ -48,11 +48,21 @@ StartClient::StartClient() {
         StartClient();
     }
     else{
-        pthread_t serverThread;
+        pthread_t clientThread;
         clientConnection = new SocketClient;
         clientConnection->setServerSocket(socketPortClient);
         clientConnection->setIpAddress(ipAddress);
-        pthread_create(&serverThread, nullptr , clientInit, nullptr);
+        pthread_create(&clientThread, nullptr , clientInit, nullptr);
+        pthread_detach(clientThread);
+    }
+
+    while(true){
+        string msg;
+        cin>>msg;
+        if(msg=="exit"){
+            break;
+        }
+        clientConnection->setMessage(msg.c_str());
     }
 
     delete clientConnection;
