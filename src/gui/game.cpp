@@ -237,21 +237,22 @@ void Game::update() {
 
                 if (brick->type==Commun){
                     brick->hits -= 1;
-                    if(brick->hits==0){
+                    if(brick->hits<=0){
                         brick->isAlive = false;
                         brick->isFront = false;
                         points += brick->value;
                     }
                 }
+
                 else if(brick->type==Double){
                     brick->hits -= 1;
-                    if(brick->hits==0){
+                    if(brick->hits<=0){
                         brick->isAlive = false;
                         brick->isFront = false;
                         points += brick->value;
                     }
                 }
-                else if(brick->type==Triple){
+                else if(brick->type<=Triple){
                     brick->hits -= 1;
                     if(brick->hits==0){
                         brick->isAlive = false;
@@ -259,7 +260,7 @@ void Game::update() {
                         points += brick->value;
                     }
                 }
-                else if(brick->type==Surprise){
+                else if(brick->type<=Surprise){
                     brick->hits -= 1;
                     if(brick->hits==0){
                         brick->isAlive = false;
