@@ -8,13 +8,13 @@
 #include "entity_sdl.h"
 //#include "include_sdl.h"
 
-enum typeBrick{
+enum TypeBrick{
     Commun,
     Double,
     Triple,
+    Surprise,
     Deep,
     Inside,
-    Surprise,
 };
 
 
@@ -22,13 +22,13 @@ class Brick: public EntitySDL{
 public:
     Brick();
 
-    typeBrick type;
+    TypeBrick type;
     int value{};
     int hits{};
     int isAlive = true;
     int isFront = false;
 
-    Brick(int w, int h, typeBrick type);
+    Brick(int w, int h, TypeBrick type);
 
 
 private:

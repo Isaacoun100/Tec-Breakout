@@ -6,6 +6,7 @@
 #include "object_sdl.h"
 #include "text_sdl.h"
 #include "brick.h"
+#include <random>
 
 
 Game::Game() {
@@ -28,19 +29,27 @@ Game::Game() {
     ball.setId(idObjects++);
 
     Brick value = Brick();
-    fill(*matrix_brick, *matrix_brick + ROW*COL, value);
+    fill(*matrixBrick, *matrixBrick + ROW * COL, value);
     resetGame();
 }
 
 void Game::resetGame(){
+    bar = Bar(width/4,14,height-height/16);
+    ball = Ball(16);
 
-    for(int i=0; i<ROW; i++) {
-        for (int j=0; j<COL; j++){
-            //Logica de escoger el brick
+    bool deepBricks [ROW][COL];
+    fill(*deepBricks, *deepBricks + ROW + COL, false);
+    srand(time(NULL));
+    int randomNum;
+    for (int i= ROW-1; 0<=i; i--){
+        for (int j = COL-1; 0<=j; j--){
+            randomNum = rand() % (1+Surprise - Commun) +Commun;
+            auto typeBrick = static_cast<TypeBrick>(randomNum);
+
             Brick brick =Brick((width-(SPACING*COL))/COL,
-                                22, Commun);
+                               22, typeBrick);
             brick.setId(idObjects++);
-            matrix_brick[i][j] = brick;
+            matrixBrick[i][j] = brick;
         }
     }
 
@@ -76,7 +85,7 @@ void Game::render(){
     int x = 0;
     for(int i=0; i<ROW; i++) {
         for (int j=0; j<COL; j++) {
-            Brick *brick  = &matrix_brick[i][j];;
+            Brick *brick  = &matrixBrick[i][j];;
             if (brick->isAlive && 0 < abs(brick->hits)) {
                 setBricks(brick, x);
                 brick->draw(renderer);
@@ -129,7 +138,7 @@ void Game::update() {
     bool reset = true;
     for(int i=0; i<ROW; i++) {
         for (int j = 0; j < COL; j++) {
-            Brick *brick = &matrix_brick[i][j];
+            Brick *brick = &matrixBrick[i][j];
             if (SDL_HasIntersection(&(ball.rect),
                                     &(brick->rect))&&brick->isAlive) {
                 if (brick->hits-1 == 0){

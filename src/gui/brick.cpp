@@ -4,7 +4,7 @@
 
 #include "brick.h"
 
-Brick::Brick(int w, int h, typeBrick type) {
+Brick::Brick(int w, int h, TypeBrick type) {
     this->rect.w = w;
     this->rect.h = h;
     this->type = type;
@@ -31,6 +31,13 @@ void Brick::setFeatureBrick(){
         color.green = 242;
         color.blue = 119;
     }
+    if (type==Surprise){
+        value = 0;
+        hits = 1;
+        color.red = 150;
+        color.green = 81;
+        color.blue = 196;
+    }
     if (type==Deep){
         value = 0;
         hits = -1;
@@ -45,13 +52,7 @@ void Brick::setFeatureBrick(){
         color.green = 237;
         color.blue = 36;
     }
-    if (type==Surprise){
-        value = 0;
-        hits = 1;
-        color.red = 150;
-        color.green = 81;
-        color.blue = 196;
-    }
+
 }
 
 Brick::Brick() {

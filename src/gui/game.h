@@ -34,7 +34,7 @@ public:
 
     Ball ball;
 
-    Brick matrix_brick[ROW][COL];
+    Brick matrixBrick[ROW][COL];
 
     TextSDL text1;
 

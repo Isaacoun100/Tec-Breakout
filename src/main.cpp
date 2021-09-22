@@ -1,7 +1,6 @@
 
 #include "gui/game.h"
 auto game = new Game();
-
 int listenClient(){
     string txt;
     cin >> txt;
