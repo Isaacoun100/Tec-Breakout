@@ -31,7 +31,8 @@ void Game::resetGame(){
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
-            randomNum = rand() % (1+Deep - Commun) +Commun;
+            randomNum = Deep;
+                    rand() % (1+Deep - Commun) +Commun;
 
             for (int x = ROW-1; 1<=x; x--){
                 if(deepBricks[x][j]&&i<x){
@@ -271,8 +272,19 @@ void Game::update() {
                     surpriseEvent(&num);
                 }
                 else if(brick->type==Deep){
-                    if(ball.deep%ROW>0){
-                        cout <<"Destruyo bloques internos!!" << endl;
+                    if(i!=0){
+                        if(ball.deep%i!=0 && i!=1){
+                            cout << "Borre a " << i-1 << " " << j <<endl;
+                            Brick *b2 = &(matrixBrick[i-1][j]);
+                            b2->isAlive = false;
+                            swapBricks(brick,b2);
+                            render();
+                        }
+                        else if(i==1){
+                            (matrixBrick[0][j]).isAlive = false;
+                            brick->isAlive = false;
+                            cout<<"Borro doble"<<endl;
+                        }
                     }
                     ball.deep += 1;
                 }
@@ -284,7 +296,7 @@ void Game::update() {
 
     text1.setText("LIVES "+  std::to_string(liveCount));
     text2.setText("POINTS "+ std::to_string(points));
-    text3.setText("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep%ROW) +")");
+    text3.setText("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep) +")");
     text4.setText("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")");
 }
 
@@ -329,6 +341,12 @@ void Game::surpriseEvent(int *num){
             txt = "Restore    ";
     }
     text5.setText("Last surprise was " + txt);
+}
+
+void Game::swapBricks( Brick *a, Brick* b){
+    Brick temp = *b;
+    *a=*b;
+    *b = temp;
 }
 
 bool Game::moveToRightBar(){

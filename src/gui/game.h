@@ -69,6 +69,8 @@ public:
 
     int counter;
     bool recoverEvent = false;
+
+    void swapBricks(Brick *a, Brick *b);
 };
 
 
