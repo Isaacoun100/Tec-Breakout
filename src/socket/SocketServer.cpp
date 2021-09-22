@@ -8,7 +8,6 @@ void SocketServer::setServerSocket(int serverSocket) { this->serverSocket=server
 bool SocketServer::createConnection(){
     identifier = socket(AF_INET, SOCK_STREAM,IPPROTO_TCP);
     if(identifier<0) return false;
-
     info.sin_family = AF_INET;
     info.sin_addr.s_addr = INADDR_ANY;
     info.sin_port = htons(serverSocket);
@@ -44,7 +43,7 @@ void SocketServer::run() {
             client.push_back(data.identifier);
             cout <<"Connection with "+ to_string(identifier)  +" successful"<<endl;
             pthread_t thread;
-            pthread_create(&thread, 0, SocketServer::clientManager,(void*)&data);
+            pthread_create(&thread, nullptr, SocketServer::clientManager,(void*)&data);
         }
     }
     close(identifier);
@@ -61,12 +60,12 @@ void * SocketServer::clientManager(void *obj) {
             message.append(buffer,bytes);
             if(bytes<=0){
                 close(data->identifier);
-                pthread_exit(0);
+                pthread_exit(nullptr);
             }
             if(bytes<1024) break;
         }
         cout<<message<<endl;
-        if(message=="salir") break;
+        if(message=="exit") break;
     }
 
     close(data->identifier);

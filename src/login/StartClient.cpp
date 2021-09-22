@@ -4,9 +4,6 @@
 
 SocketClient* clientConnection;
 
-int socketPortClient;
-string ipAddress;
-
 void * clientInit(void *){
 
 
@@ -21,6 +18,9 @@ void * clientInit(void *){
 }
 
 StartClient::StartClient() {
+    int socketPortClient;
+    string ipAddress;
+
     string option;
     cout <<"*********************************************************\n"
            "***    Please enter the ip where the server is in    ****\n"
@@ -36,12 +36,12 @@ StartClient::StartClient() {
            "*********************************************************\n";
     cin >> option;
 
+    stringstream parse(option);
+    parse >> socketPortClient;
+
     if(ipAddress=="0" || option=="0"){
         Login();
     }
-
-    stringstream parse(option);
-    parse >> socketPortClient;
 
     if(socketPortClient<=1024){
         cout<<"Sorry, your input doesn't match any open ports"<<endl;

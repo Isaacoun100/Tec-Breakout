@@ -47,7 +47,7 @@ StartServer::StartServer() {
             string msg;
             cin >> msg;
             if(msg == "exit") break;
-            serverConnection ->setMessage(msg.c_str());
+            serverConnection->setMessage(msg.c_str());
         }
         delete serverConnection;
 
