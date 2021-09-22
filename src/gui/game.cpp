@@ -19,12 +19,39 @@ void Game::resetGame(){
     ball = Ball(16);
 
     bool deepBricks [ROW][COL];
-    fill(*deepBricks, *deepBricks + ROW + COL, false);
+    for (int i= 0; i<ROW; i++) {
+        for (int j = 0; j < COL; j++) {
+            deepBricks[i][j] = false;
+        }
+    }
+
+
+
     srand(time(NULL));
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
-            randomNum = rand() % (1+Surprise - Commun) +Commun;
+            randomNum = rand() % (1+Deep - Commun) +Commun;
+
+            for (int x = ROW-1; 1<=x; x--){
+                if(deepBricks[x][j]&&i<x){
+                    randomNum = Inside;
+                    break;
+                }
+            }
+
+            if ( randomNum==Deep){
+                if(i>0){
+                    deepBricks[i][j] = true;
+                }
+                else{
+                    randomNum = rand() % (1+Surprise - Commun) + Commun;
+                }
+            }
+
+
+
+
             auto typeBrick = static_cast<TypeBrick>(randomNum);
 
             Brick brick =Brick((width-(SPACING*COL))/COL,
@@ -73,7 +100,8 @@ void Game::run(){
     Brick value = Brick();
     fill(*matrixBrick, *matrixBrick + ROW * COL, value);
     resetGame();
-    PrimitiveWindow::run();
+    this->running = true;
+    this->loop();
 }
 
 void Game::render(){
@@ -86,15 +114,14 @@ void Game::render(){
     ball.draw(renderer);
     bar.draw(renderer);
 
-    int x = 0;
     for(int i=0; i<ROW; i++) {
         for (int j=0; j<COL; j++) {
             Brick *brick  = &matrixBrick[i][j];;
             if (brick->isAlive && 0 < abs(brick->hits)) {
-                setBricks(brick, x);
+                brick->rect.x = ((j+1)*SPACING)+(j*brick->rect.w)-(SPACING/2);
+                brick->rect.y = brick->rect.h*3+((i+1)*SPACING)+(i*brick->rect.h)-(SPACING/2);
                 brick->draw(renderer);
             }
-            x++;
         }
     }
 
@@ -118,7 +145,7 @@ void Game::input() {
 }
 
 void Game::update() {
-    if(liveCount<=0) {resetGame();}
+    if(liveCount<=0) {stop();}
 
     if(SDL_HasIntersection(&(ball.rect), &(bar.rect))) {
         double rel=(bar.rect.x+(bar.rect.w/2))-(ball.rect.x+(ball.size/2));

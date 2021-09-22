@@ -9,12 +9,12 @@
 //#include "include_sdl.h"
 
 enum TypeBrick{
-    Commun,
-    Double,
-    Triple,
-    Surprise,
-    Deep,
-    Inside,
+    Commun =0,
+    Double=1,
+    Triple=2,
+    Surprise=3,
+    Deep=4,
+    Inside=5,
 };
 
 
