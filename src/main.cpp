@@ -1,6 +1,5 @@
 #include "login/Login.h"
 
-int main(int argc, char** argv){
+int main(){
     Login();
-    return 0;
 }
