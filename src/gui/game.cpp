@@ -31,8 +31,7 @@ void Game::resetGame(){
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
-            randomNum = Deep;
-                    rand() % (1+Deep - Commun) +Commun;
+            randomNum = rand() % (1+Surprise - Commun) +Commun;
 
             for (int x = ROW-1; 1<=x; x--){
                 if(deepBricks[x][j]&&i<x){
@@ -170,8 +169,8 @@ void Game::update() {
     if(liveCount<=0) {stop();}
 
     if(SDL_HasIntersection(&(ball.rect), &(bar.rect))) {
-        double rel=(bar.rect.x+(width/4/2))-(ball.rect.x+(ball.size/2));
-        double norm=rel/(width/4/2);
+        double rel=(bar.rect.x+(bar.rect.w/2))-(ball.rect.x+(ball.size/2));
+        double norm=rel/(bar.rect.w/2);
         double bounce = norm* (5*PI/12);
         velY=-ball.speed*cos(bounce);
         velX=ball.speed*-sin(bounce);
@@ -274,7 +273,7 @@ void Game::update() {
                 else if(brick->type==Deep){
                     if(i!=0){
                         if(ball.deep%i!=0 && i!=1){
-                            cout << "Borre a " << i-1 << " " << j <<endl;
+//                            cout << "Borre a " << i-1 << " " << j <<endl;
                             Brick *b2 = &(matrixBrick[i-1][j]);
                             b2->isAlive = false;
                             swapBricks(brick,b2);
@@ -283,7 +282,7 @@ void Game::update() {
                         else if(i==1){
                             (matrixBrick[0][j]).isAlive = false;
                             brick->isAlive = false;
-                            cout<<"Borro doble"<<endl;
+//                            cout<<"Borro doble"<<endl;
                         }
                     }
                     ball.deep += 1;
