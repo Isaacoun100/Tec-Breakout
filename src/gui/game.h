@@ -59,6 +59,8 @@ public:
     bool moveToRightBar();
 
     bool moveToLeftBar();
+
+    void run();
 };
 
 

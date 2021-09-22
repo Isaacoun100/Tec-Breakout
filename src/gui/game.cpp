@@ -12,25 +12,6 @@
 Game::Game() {
     PrimitiveWindow::initWindow("TecBreakout",
                                 1500, 1000);
-    PrimitiveWindow::initWindow();
-    bar = Bar(width/4,14,height-height/16);
-    ball = Ball(16);
-    text1 = TextSDL("LIVES "+  std::to_string(liveCount),
-                    width / 2 + FONT_SIZE / 2+100, FONT_SIZE * 1.5,
-                    0, 0, 0, font1);
-
-    text2 = TextSDL("POINTS "+ std::to_string(points),
-                    width / 2 + FONT_SIZE / 2 -100, FONT_SIZE * 1.5,
-                    0, 0, 0, font1);
-
-    text1.setId(idObjects++);
-    text2.setId(idObjects++);
-    bar.setId(idObjects++);
-    ball.setId(idObjects++);
-
-    Brick value = Brick();
-    fill(*matrixBrick, *matrixBrick + ROW * COL, value);
-    resetGame();
 }
 
 void Game::resetGame(){
@@ -70,6 +51,29 @@ void Game::loop() {
         input();
         render();
     }
+}
+
+void Game::run(){
+    PrimitiveWindow::initWindow();
+    bar = Bar(width/4,14,height-height/16);
+    ball = Ball(16);
+    text1 = TextSDL("LIVES "+  std::to_string(liveCount),
+                    width / 2 + FONT_SIZE / 2+100, FONT_SIZE * 1.5,
+                    0, 0, 0, font1);
+
+    text2 = TextSDL("POINTS "+ std::to_string(points),
+                    width / 2 + FONT_SIZE / 2 -100, FONT_SIZE * 1.5,
+                    0, 0, 0, font1);
+
+    text1.setId(idObjects++);
+    text2.setId(idObjects++);
+    bar.setId(idObjects++);
+    ball.setId(idObjects++);
+
+    Brick value = Brick();
+    fill(*matrixBrick, *matrixBrick + ROW * COL, value);
+    resetGame();
+    PrimitiveWindow::run();
 }
 
 void Game::render(){
