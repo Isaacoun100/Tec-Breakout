@@ -24,16 +24,17 @@ struct dataSocket{
 
 class SocketServer {
 public:
+    int serverSocket;
     SocketServer();
+    void setServerSocket(int serverSocket);
     void run();
     void setMessage(const char* msn);
-
+    bool linkKernel();
+    bool createConnection();
 private:
+
     int identifier;
     sockaddr_in info;
-
-    bool createConnection();
-    bool linkKernel();
     vector<int> client;
     static void* clientManager(void* obj);
 

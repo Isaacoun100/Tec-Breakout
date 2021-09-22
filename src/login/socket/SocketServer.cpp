@@ -3,14 +3,18 @@
 
 SocketServer::SocketServer() {}
 
+void SocketServer::setServerSocket(int serverSocket) { this->serverSocket=serverSocket; }
+
 bool SocketServer::createConnection(){
     identifier = socket(AF_INET, SOCK_STREAM,IPPROTO_TCP);
     if(identifier<0) return false;
 
     info.sin_family = AF_INET;
     info.sin_addr.s_addr = INADDR_ANY;
-    info.sin_port = htons(6969);
+    info.sin_port = htons(serverSocket);
+
     memset(&info.sin_zero , 0, sizeof(info.sin_zero));
+
     return true;
 }
 
