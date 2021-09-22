@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
-add_executable(Tec-Breakout src/main.cpp src/gui/example_gui.cpp src/logic/example_logic.cpp src/gui/example_gui.h src/logic/example_logic.h src/socket/SocketServer.cpp src/socket/SocketServer.h src/socket/SocketClient.cpp src/socket/SocketClient.h)
+add_executable(Tec-Breakout src/main.cpp src/gui/example_gui.cpp src/logic/example_logic.cpp src/gui/example_gui.h src/logic/example_logic.h src/socket/SocketServer.cpp src/socket/SocketServer.h src/socket/SocketClient.cpp src/socket/SocketClient.h src/login/StartClient.cpp src/login/StartClient.h src/login/StartServer.cpp src/login/StartServer.h src/login/Login.cpp src/login/Login.h)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
