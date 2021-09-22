@@ -139,10 +139,3 @@ void PrimitiveWindow::setBackgroundColor(int red, int green, int blue, int trans
 
 
 
-/**
- * @brief The title of the window.
- * @return The title of the window.
- */
-const string &PrimitiveWindow::getTitle() const {
-    return title;
-}
