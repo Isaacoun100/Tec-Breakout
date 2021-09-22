@@ -1,9 +1,6 @@
-#include "logic/example_logic.h"
-o
-#include "gui/example_gui.h"
+#include "login/Login.h"
 
 int main(int argc, char** argv){
-    printa();
-    firtsGUI();
+    Login();
     return 0;
 }
