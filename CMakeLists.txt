@@ -4,10 +4,19 @@ project(Tec-Breakout VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${${PROJECT_NAME}_SOURCE_DIR}/cmake")
 
-add_executable(TecBreakout src/main.cpp
+add_executable(Tec-Breakout src/main.cpp
         src/gui/primitive_window.cpp
         src/gui/primitive_window.h
-
+        src/socket/SocketServer.cpp
+        src/socket/SocketServer.h
+        src/socket/SocketClient.cpp
+        src/socket/SocketClient.h
+        src/login/StartClient.cpp
+        src/login/StartClient.h
+        src/login/StartServer.cpp
+        src/login/StartServer.h
+        src/login/Login.cpp
+        src/login/Login.h
         src/gui/game.cpp
         src/gui/game.h
         src/gui/text_sdl.cpp
@@ -28,7 +37,6 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
 set(CMAKE_CXX_FLAGS -pthread)
 
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} )
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
@@ -36,4 +44,8 @@ find_package(SDL2_ttf REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
         ${SDL2_TTF_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
+
+target_link_libraries(${PROJECT_NAME}
+        ${SDL2_LIBRARY}
+        ${SDL2_IMAGE_LIBRARIES}
+        ${SDL2_TTF_LIBRARIES})
