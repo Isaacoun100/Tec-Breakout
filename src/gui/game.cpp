@@ -194,7 +194,9 @@ void Game::update() {
         liveCount--;
         surpriseEvent(&num);
     }
-    num = rand() % (1+4 - 0) +0;
+    int randomArray[2] = {0, 3};
+    num = randomArray[rand() % (1+1 - 0) +0];
+
     if(counter%120==0&&counter!=0 ) {
         if (!recoverEvent) {
             surpriseEvent(&num);

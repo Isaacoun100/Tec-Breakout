@@ -4,7 +4,8 @@ project(Tec-Breakout VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${${PROJECT_NAME}_SOURCE_DIR}/cmake")
 
-add_executable(Tec-Breakout src/main.cpp
+add_executable(Tec-Breakout
+        src/main.cpp
         src/gui/primitive_window.cpp
         src/gui/primitive_window.h
         src/socket/SocketServer.cpp
@@ -30,7 +31,8 @@ add_executable(Tec-Breakout src/main.cpp
         src/gui/bar.h
         src/gui/entity_sdl.cpp
         src/gui/entity_sdl.h
-        )
+        src/gui/PlayerGUI.cpp
+        src/gui/PlayerGUI.h)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
