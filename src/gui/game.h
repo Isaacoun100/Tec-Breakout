@@ -31,7 +31,7 @@ private:
     /**
      * THe num of the rows the matrixBricks.
      */
-    static const int ROW = 3;
+    static const int ROW = 5;
 
     /**
      * The for bricks.
