@@ -4,30 +4,20 @@
 
 #include "text_sdl.h"
 
-const string& TextSDL::getText() const {
-    return text;
-}
-
+/**
+ * @brief Set the text of the object.
+ * @param text Set the text of the object.
+ */
 void TextSDL::setText(const string &text) {
     this->text = text;
 }
 
-int TextSDL::getX() const {
-    return x;
-}
-
-void TextSDL::setX(int x) {
-    this->x = x;
-}
-
-int TextSDL::getY() const {
-    return y;
-}
-
-void TextSDL::setY(int y) {
-    this->y = y;
-}
-
+/**
+ * @brief Set the color of the text.
+ * @param red The red RGB.
+ * @param green The green RBG.
+ * @param blue The blue RGB.
+ */
 void TextSDL::setColor(int red, int green, int blue) {
     this->color.r = red;
     this->color.g = green;
@@ -35,6 +25,10 @@ void TextSDL::setColor(int red, int green, int blue) {
     this->color.a = 255;
 }
 
+/**
+* @brief This method draw fot the object.
+ * @param The renderer of the window.
+ */
 void TextSDL::draw(SDL_Renderer *renderer) {
     SDL_SetRenderDrawColor(renderer,
                            0,
@@ -55,8 +49,21 @@ void TextSDL::draw(SDL_Renderer *renderer) {
     SDL_DestroyTexture(texture);
 }
 
+/**
+ * @brief The constructor of the class.
+ * @param text The text of the object.
+ * @param x The position x in the window.
+ * @param y The position y in the window.
+ * @param red The red RGB.
+ * @param green The green RBG.
+ * @param blue The blue RGB.
+ * @param font The font of the text.
+ */
 TextSDL::TextSDL(const string &text, int x, int y, int red, int green, int blue, TTF_Font *font) : text(text), x(x), y(y),font(font) { setColor(red, green, blue);}
 
+/**
+* @brief The default constructor of the class.
+*/
 TextSDL::TextSDL() {
 
 }

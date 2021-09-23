@@ -12,37 +12,84 @@
 
 using namespace std;
 
-
+/**
+ * @brief The way to create text in SDL2 with classes.
+ * @author Carlos A. Mata C. <carlos.andres12001 @ gmail.com>
+ */
 class TextSDL:public ObjectSDL{
 public:
-    TextSDL();
 
+    /**
+     * The data of the text.
+     */
     string text;
+
+    /**
+* The size of the object.
+*/
     SDL_Rect rect;
+
+    /**
+* The position in x in the window.
+*/
     int x;
+
+    /**
+     * The position in y in the window.
+     */
     int y;
+
+    /**
+     * The color of the text.
+     */
     SDL_Color color;
 
-    TextSDL(const TTF_Font &font);
-
-    TextSDL(const string &text, int x, int y, int red, int green, int blue, TTF_Font *font);
-
-    const string &getText() const;
-
-    void setText(const string &text);
-
+    /**
+     * THe font of the text.
+     */
     TTF_Font *font;
 
-    int getX() const;
+    /**
+* @brief The default constructor of the class.
+    */
+    TextSDL();
 
-    void setX(int x);
+    /**
+     * @brief The constructor if the class width the type of font.
+     * @param font The font of the text.
+     */
+    TextSDL(const TTF_Font &font);
 
-    int getY() const;
+    /**
+     * @brief The constructor of the class.
+     * @param text The text of the object.
+     * @param x The position x in the window.
+     * @param y The position y in the window.
+     * @param red The red RGB.
+     * @param green The green RBG.
+     * @param blue The blue RGB.
+     * @param font The font of the text.
+     */
+    TextSDL(const string &text, int x, int y, int red, int green, int blue, TTF_Font *font);
 
-    void setY(int y);
+    /**
+     * @brief Set the text of the object.
+     * @param text Set the text of the object.
+     */
+    void setText(const string &text);
 
+    /**
+     * @brief Set the color of the text.
+     * @param red The red RGB.
+     * @param green The green RBG.
+     * @param blue The blue RGB.
+     */
     void setColor(int red, int green, int blue);
 
+    /**
+    * @brief This method draw fot the object.
+     * @param The renderer of the window.
+     */
     void draw(SDL_Renderer *renderer) override;
 
 };
