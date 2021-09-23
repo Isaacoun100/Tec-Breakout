@@ -13,6 +13,12 @@
  * @author Carlos A. Mata C. <carlos.andres12001 @ gmail.com>
  */
 class PlayerGUI : public PrimitiveWindow{
+private:
+    /**
+    * @brief Override the method input.
+    */
+    void input() override;
+
 public:
 
     /**
@@ -21,14 +27,13 @@ public:
     string txtInput = "";
 
     /**
-    * @brief Override the method innput.
-    */
-    void input() override;
-
-    /**
     * @brief THe constructor of the class put the tittle and dimensions.
     */
     PlayerGUI();
+
+    /**
+     * @brief Override the method run.
+     */
     void run() override;
 };
 

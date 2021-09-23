@@ -7,7 +7,7 @@
 #include "player_gui.h"
 
 /**
- * @brief Override the method innput.
+ * @brief Override the method input.
  */
 void PlayerGUI::input() {
     SDL_Event e;

@@ -8,12 +8,17 @@
 #include "brick.h"
 #include <random>
 
-
+/**
+* @brief THe constructor of the class put the tittle and dimensions.
+*/
 Game::Game() {
     PrimitiveWindow::initWindow("TecBreakout",
                                 1500, 1000);
 }
 
+/**
+* @brief Set the features of the game so that game init.  .
+*/
 void Game::resetGame(){
     bar = Bar(width/4,14,height-height/16);
     ball = Ball(16);
@@ -31,7 +36,7 @@ void Game::resetGame(){
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
-            randomNum = rand() % (1+Surprise - Commun) +Commun;
+            randomNum = rand() % (1+Deep - Commun) +Commun;
 
             for (int x = ROW-1; 1<=x; x--){
                 if(deepBricks[x][j]&&i<x){
@@ -41,7 +46,7 @@ void Game::resetGame(){
             }
 
             if ( randomNum==Deep){
-                if(i>0){
+                if(i==1){
                     deepBricks[i][j] = true;
                 }
                 else{
@@ -69,18 +74,24 @@ void Game::resetGame(){
     ball.rect.x=width/2-(ball.size/2);
 }
 
+/**
+ * @brief Override the method loop.
+ */
 void Game::loop() {
 
     while(running) {
         lastFrame=SDL_GetTicks();
         static int lastTime;
-        if(lastFrame >= (lastTime+1000)) {lastTime=lastFrame; frameCount=0; counter++;}
+        if(lastFrame >= (lastTime+1000)) {lastTime=lastFrame; frameCount=0; counterSeconds++;}
         update();
         input();
         render();
     }
 }
 
+/**
+* @brief Override the method run.
+*/
 void Game::run(){
     PrimitiveWindow::initWindow();
     bar = Bar(width/4,14,height-height/16);
@@ -121,6 +132,9 @@ void Game::run(){
     this->loop();
 }
 
+/**
+ * @brief Override the method renderer.
+ */
 void Game::render(){
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
@@ -149,6 +163,9 @@ void Game::render(){
     SDL_RenderPresent(renderer);
 }
 
+/**
+* @brief Override the method inout.
+*/
 void Game::input() {
     SDL_Event e;
     const Uint8 *keyboardState = SDL_GetKeyboardState(nullptr);
@@ -165,6 +182,9 @@ void Game::input() {
     }
 }
 
+/**
+* @brief Override the method update.
+*/
 void Game::update() {
     if(liveCount<=0) {stop();}
 
@@ -197,7 +217,7 @@ void Game::update() {
     int randomArray[2] = {0, 3};
     num = randomArray[rand() % (1+1 - 0) +0];
 
-    if(counter%120==0&&counter!=0 ) {
+    if(counterSeconds % 120 == 0 && counterSeconds != 0 ) {
         if (!recoverEvent) {
             surpriseEvent(&num);
             recoverEvent = true;
@@ -254,7 +274,7 @@ void Game::update() {
                         points += brick->value;
                     }
                 }
-                else if(brick->type<=Triple){
+                else if(brick->type==Triple){
                     brick->hits -= 1;
                     if(brick->hits==0){
                         brick->isAlive = false;
@@ -262,7 +282,7 @@ void Game::update() {
                         points += brick->value;
                     }
                 }
-                else if(brick->type<=Surprise){
+                else if(brick->type==Surprise){
                     brick->hits -= 1;
                     if(brick->hits==0){
                         brick->isAlive = false;
@@ -275,16 +295,14 @@ void Game::update() {
                 else if(brick->type==Deep){
                     if(i!=0){
                         if(ball.deep%i!=0 && i!=1){
-//                            cout << "Borre a " << i-1 << " " << j <<endl;
                             Brick *b2 = &(matrixBrick[i-1][j]);
                             b2->isAlive = false;
                             swapBricks(brick,b2);
                             render();
                         }
-                        else if(i==1){
+                        else if(i==1 && ball.deep>0){
                             (matrixBrick[0][j]).isAlive = false;
                             brick->isAlive = false;
-//                            cout<<"Borro doble"<<endl;
                         }
                     }
                     ball.deep += 1;
@@ -301,6 +319,9 @@ void Game::update() {
     text4.setText("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")");
 }
 
+/**
+ * @brief DO the surprise event..
+ */
 void Game::surpriseEvent(int *num){
     string txt = "";
     switch (*num) {
@@ -344,12 +365,18 @@ void Game::surpriseEvent(int *num){
     text5.setText("Last surprise was " + txt);
 }
 
+/**
+    * @brief Swap the bricks.
+    */
 void Game::swapBricks( Brick *a, Brick* b){
     Brick temp = *b;
     *a=*b;
     *b = temp;
 }
 
+/**
+* @brief Move the bar to the right..
+*/
 bool Game::moveToRightBar(){
     bool condition = bar.rect.x+bar.rect.w+bar.speed<width-10;
 
@@ -359,6 +386,9 @@ bool Game::moveToRightBar(){
     return condition;
 }
 
+/**
+* @brief Move the bar to the left.
+*/
 bool Game::moveToLeftBar(){
     bool condition = bar.rect.x -bar.speed > 10;
     if (condition){
