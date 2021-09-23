@@ -31,8 +31,8 @@ add_executable(Tec-Breakout
         src/gui/bar.h
         src/gui/entity_sdl.cpp
         src/gui/entity_sdl.h
-        src/gui/PlayerGUI.cpp
-        src/gui/PlayerGUI.h)
+        src/gui/player_gui.cpp
+        src/gui/player_gui.h)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
