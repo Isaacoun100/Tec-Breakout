@@ -1,9 +1,14 @@
 #include "StartServer.h"
-#include "../socket/SocketServer.h"
-#include "Login.h"
 
 SocketServer* serverConnection;
+Game* breakout;
+
 int socketPortServer;
+string newMessage;
+
+void StartServer::setNewMessage(string userInput) {
+    newMessage=move(userInput);
+}
 
 void * serverInit(void *){
     try {
@@ -13,6 +18,11 @@ void * serverInit(void *){
     catch (exception& e) {
         cout<<"An exception was found with the error message\n"<<e.what()<<"\n In line 12 from StartServer.cpp";
     }
+    return nullptr;
+}
+
+void * gameInit(void*){
+    breakout->run();
     return nullptr;
 }
 
@@ -38,17 +48,41 @@ StartServer::StartServer() {
         StartServer();
     }
     else{
-        pthread_t serverThread;
+
+        //pthread_t declarations
+        pthread_t serverThread, gameThread;
+
+        //Constructors called for the *void method
         serverConnection = new SocketServer;
+        breakout = new Game;
+
+        //Thread for the server
         pthread_create(&serverThread, nullptr , serverInit, nullptr);
         pthread_detach(serverThread);
 
+        //Tread for the game
+        pthread_create(&gameThread, nullptr, gameInit, nullptr);
+        pthread_detach(gameThread);
+
         while(true){
-            string msg;
-            cin >> msg;
-            if(msg == "exit") break;
-            serverConnection->setMessage(msg.c_str());
+
+            this_thread::sleep_for(std::chrono::milliseconds(100));
+            if(!newMessage.empty()){
+                if(newMessage=="L"){
+                    breakout->moveToLeftBar();
+                    newMessage.clear();
+                }
+                else if(newMessage=="R"){
+                    breakout->moveToRightBar();
+                    newMessage.clear();
+                }
+                else if(newMessage=="E"){
+                    break;
+                }
+            }
         }
+
+        delete breakout;
         delete serverConnection;
 
     }
