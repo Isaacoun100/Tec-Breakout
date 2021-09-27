@@ -65,7 +65,6 @@ StartServer::StartServer() {
         pthread_detach(gameThread);
 
         while(true){
-
             this_thread::sleep_for(std::chrono::milliseconds(100));
             if(!newMessage.empty()){
                 if(newMessage=="L"){
@@ -77,6 +76,7 @@ StartServer::StartServer() {
                     newMessage.clear();
                 }
                 else if(newMessage=="E"){
+                    breakout->stop();
                     break;
                 }
             }
