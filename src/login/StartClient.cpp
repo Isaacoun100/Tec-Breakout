@@ -1,7 +1,7 @@
 #include "StartClient.h"
 
 SocketClient* clientConnection;
-PlayerGUI* playerGui;
+PlayerGUI* playerGui = new PlayerGUI();
 
 void * ClientInit(void *){
 

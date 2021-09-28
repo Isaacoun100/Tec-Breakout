@@ -172,14 +172,6 @@ void Game::input() {
     while(SDL_PollEvent(&e)){
         if(e.type==SDL_QUIT) {stop();}
     }
-
-    if(keyboardState[SDL_SCANCODE_LEFT]) {
-        moveToLeftBar();
-    }
-
-    if(keyboardState[SDL_SCANCODE_RIGHT]){
-        moveToRightBar();
-    }
 }
 
 /**
