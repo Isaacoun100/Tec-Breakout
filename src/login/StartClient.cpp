@@ -1,11 +1,9 @@
 #include "StartClient.h"
-#include "../socket/SocketClient.h"
-#include "Login.h"
 
 SocketClient* clientConnection;
+PlayerGUI* playerGui;
 
-void * clientInit(void *){
-
+void * ClientInit(void *){
 
     try {
         clientConnection->connectServer();
@@ -15,6 +13,17 @@ void * clientInit(void *){
     }
 
     return nullptr;
+}
+
+void * StartPlayerGUI(void *) {
+
+    try {
+        playerGui->run();
+    }
+    catch(exception& e){
+        cout<<"An exception was found with the error message\n"<<e.what()<<"\n In line 24 from StartServer.cpp";
+    }
+
 }
 
 StartClient::StartClient() {
@@ -49,22 +58,34 @@ StartClient::StartClient() {
     }
     else{
         pthread_t clientThread;
+        pthread_t playerGUIThread;
         clientConnection = new SocketClient;
         clientConnection->setServerSocket(socketPortClient);
         clientConnection->setIpAddress(ipAddress);
-        pthread_create(&clientThread, nullptr , clientInit, nullptr);
+        pthread_create(&clientThread, nullptr, ClientInit, nullptr);
+        pthread_create(&playerGUIThread, nullptr, StartPlayerGUI, nullptr);
         pthread_detach(clientThread);
+        pthread_detach(playerGUIThread);
     }
 
     while(true){
-        string msg;
-        cin>>msg;
-        if(msg=="exit"){
-            break;
+        string message;
+        message = playerGui->txtInput;
+        this_thread::sleep_for(std::chrono::milliseconds(10));
+        if(!message.empty()){
+
+            if(message=="E"){
+                playerGui->stop();
+                break;
+            }
+            clientConnection->setMessage(message.c_str());
+            playerGui->txtInput.clear();
+            message.clear();
+
         }
-        clientConnection->setMessage(msg.c_str());
     }
 
+    delete playerGui;
     delete clientConnection;
 
 }

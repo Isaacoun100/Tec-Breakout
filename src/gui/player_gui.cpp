@@ -17,15 +17,15 @@ void PlayerGUI::input() {
     }
 
     if(keyboardState[SDL_SCANCODE_ESCAPE]){
-        txtInput="EXIT";
+        txtInput="E";
     }
 
     if(keyboardState[SDL_SCANCODE_LEFT]) {
-        txtInput ="LEFT";
+        txtInput ="L";
     }
 
     if(keyboardState[SDL_SCANCODE_RIGHT]){
-        txtInput ="RIGHT";
+        txtInput ="R";
     }
 
 }

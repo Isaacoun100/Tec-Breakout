@@ -4,6 +4,10 @@
 #include <iostream>
 #include <sstream>
 
+#include "../socket/SocketClient.h"
+#include "Login.h"
+#include "../gui/player_gui.h"
+
 using namespace std;
 
 class StartClient {
