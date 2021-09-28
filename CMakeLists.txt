@@ -30,7 +30,7 @@ add_executable(Tec-Breakout src/main.cpp
         src/gui/bar.h
         src/gui/entity_sdl.cpp
         src/gui/entity_sdl.h
-        )
+        src/login/StartServerSingleton.cpp src/login/StartServerSingleton.h)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

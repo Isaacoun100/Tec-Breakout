@@ -1,9 +1,7 @@
 #ifndef TEC_BREAKOUT_STARTSERVER_H
 #define TEC_BREAKOUT_STARTSERVER_H
 
-#include <iostream>
 #include <sstream>
-
 #include <chrono>
 #include <thread>
 
