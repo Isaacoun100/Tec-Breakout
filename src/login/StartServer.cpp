@@ -66,14 +66,15 @@ StartServer::StartServer() {
 
         while(true){
             this_thread::sleep_for(std::chrono::milliseconds(100));
+            newMessage=ReadWrite().readFile();
             if(!newMessage.empty()){
                 if(newMessage=="L"){
                     breakout->moveToLeftBar();
-                    newMessage.clear();
+                    ReadWrite().clearFile();
                 }
                 else if(newMessage=="R"){
                     breakout->moveToRightBar();
-                    newMessage.clear();
+                    ReadWrite().clearFile();
                 }
                 else if(newMessage=="E"){
                     breakout->stop();
