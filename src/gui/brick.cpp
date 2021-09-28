@@ -4,6 +4,12 @@
 
 #include "brick.h"
 
+/**
+ * The constructor with w, h, y param.
+ * @param w The width of the object.
+ * @param h The height of the object.
+ * @param y The position y of the object.
+ */
 Brick::Brick(int w, int h, TypeBrick type) {
     this->rect.w = w;
     this->rect.h = h;
@@ -11,6 +17,9 @@ Brick::Brick(int w, int h, TypeBrick type) {
     setFeatureBrick();
 }
 
+/**
+ * Set the Feature of the type brick.
+ */
 void Brick::setFeatureBrick(){
     if (type==Commun){
         value = 10;
@@ -49,5 +58,8 @@ void Brick::setFeatureBrick(){
 
 }
 
+/**
+ * THe default constructor.
+ */
 Brick::Brick() {
 }

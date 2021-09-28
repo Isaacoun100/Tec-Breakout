@@ -39,6 +39,9 @@ protected:
      */
     int lastFrame{};
 
+    /**
+     * The font on the window.
+     */
     TTF_Font *font1;
 
     /**
