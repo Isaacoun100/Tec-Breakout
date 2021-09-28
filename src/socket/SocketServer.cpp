@@ -1,6 +1,5 @@
 #include "SocketServer.h"
 
-
 SocketServer::SocketServer() {}
 
 void SocketServer::setServerSocket(int serverSocket) { this->serverSocket=serverSocket; }
@@ -64,7 +63,8 @@ void * SocketServer::clientManager(void *obj) {
             }
             if(bytes<1024) break;
         }
-        cout<<message<<endl;
+
+        ReadWrite().writeFile(message);
         if(message=="exit") break;
     }
 
