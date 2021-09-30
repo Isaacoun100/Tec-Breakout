@@ -1,9 +1,22 @@
 #include "SocketServer.h"
 
+ /**
+ * This is the constructor for the SocketServer class, this clas will executed when the
+ * class is called.
+ */
 SocketServer::SocketServer() {}
 
+ /**
+ *  This method is a setter for the integer variable called serverSocket
+ * @param serverSocket is the ip in which the server will be allocated in
+ */
 void SocketServer::setServerSocket(int serverSocket) { this->serverSocket=serverSocket; }
 
+ /**
+ * CreateConnection will test that the server information is correct, and will try to
+ * open a port
+ * @return a boolean value based on whether or not the connection was succesfull.
+ */
 bool SocketServer::createConnection(){
     identifier = socket(AF_INET, SOCK_STREAM,IPPROTO_TCP);
     if(identifier<0) return false;
@@ -16,6 +29,11 @@ bool SocketServer::createConnection(){
     return true;
 }
 
+ /**
+ * This method will test that the information brinded by the client is correct, if it is
+ * correct then the method will return true, if not, is going to return false.
+ * @return a boolean value based on whether or not the link can be made.
+ */
 bool SocketServer::linkKernel(){
     if((bind(identifier, (sockaddr*)&info, (socklen_t)sizeof(info)))<0)
         return false;
@@ -23,6 +41,10 @@ bool SocketServer::linkKernel(){
     return true;
 }
 
+ /**
+ * This is the method that will open the server and receive the messages, this method
+ * should be executed when is clear that the socket is available.
+ */
 void SocketServer::run() {
     if(!createConnection())
         throw string("An error was found while trying to creating the socket");
@@ -48,6 +70,11 @@ void SocketServer::run() {
     close(identifier);
 }
 
+ /**
+ * This method converts the messages sent through the socket into a string that can later
+ * be displayed or used by the server.
+ * @param obj This obj protects the server from any incoming messages
+ */
 void * SocketServer::clientManager(void *obj) {
     dataSocket* data = (dataSocket *)obj;
     while(true){
@@ -73,6 +100,12 @@ void * SocketServer::clientManager(void *obj) {
 
 }
 
+ /**
+ * SetMessage is a method that sends the incoming constant char to the fisrt client in
+ * the clients vector
+ * @param msn is the variable that contains the message that is going to be sended to the
+ * client.
+ */
 void SocketServer::setMessage(const char *msn) {
     send(4,msn, strlen(msn),0);
 }
