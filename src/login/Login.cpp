@@ -1,7 +1,8 @@
 #include "Login.h"
 
-/**
- *
+ /**
+ * This is the constructor for the Login class, it initializes and runs the
+ * basics of whats needed to execute the class.
  */
 Login::Login() {
     string option;
