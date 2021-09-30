@@ -96,7 +96,7 @@ void Game::run(){
     PrimitiveWindow::initWindow();
     bar = Bar(width/4,14,height-height/16);
     ball = Ball(16);
-    text1 = TextSDL("LIVES "+  std::to_string(liveCount),
+    text1 = TextSDL("LIVES "+  std::to_string(lifeCount),
                     width / 2 + FONT_SIZE / 2+150, FONT_SIZE * 1.5,
                     0, 0, 0, font1);
 
@@ -180,7 +180,7 @@ void Game::input() {
 * @brief Override the method update.
 */
 void Game::update() {
-    if(liveCount<=0) {stop();}
+    if(lifeCount <= 0) {exit(0);}
 
     if(SDL_HasIntersection(&(ball.rect), &(bar.rect))) {
         double rel=(bar.rect.x+(bar.rect.w/2))-(ball.rect.x+(ball.size/2));
@@ -205,7 +205,7 @@ void Game::update() {
     int num =0;
     if(ball.rect.y+ball.size>=height) {
         velY=-velY;
-        liveCount--;
+        lifeCount--;
         surpriseEvent(&num);
     }
     int randomArray[2] = {0, 3};
@@ -307,7 +307,7 @@ void Game::update() {
     }
     if(reset) { resetGame();}
 
-    text1.setText("LIVES "+  std::to_string(liveCount));
+    text1.setText("LIVES "+  std::to_string(lifeCount));
     text2.setText("POINTS "+ std::to_string(points));
     text3.setText("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep) +")");
     text4.setText("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")");

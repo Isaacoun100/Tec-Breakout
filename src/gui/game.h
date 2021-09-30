@@ -41,7 +41,7 @@ private:
     /**
      * The num of the life.
      */
-    int liveCount = 5;
+    int lifeCount = 5;
 
     /**
      * The nums of the player.
