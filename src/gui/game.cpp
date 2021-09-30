@@ -32,7 +32,7 @@ void Game::resetGame(){
 
 
 
-    srand(time(NULL));
+    srand(time(nullptr));
     int randomNum;
     for (int i= ROW-1; 0<=i; i--){
         for (int j = COL-1; 0<=j; j--){
@@ -307,7 +307,7 @@ void Game::update() {
     }
     if(reset) { resetGame();}
 
-    text1.setText("LIVES "+  std::to_string(lifeCount));
+    text1.setText("LIFES "+  std::to_string(lifeCount));
     text2.setText("POINTS "+ std::to_string(points));
     text3.setText("Ball (Speed: "+ std::to_string(ball.speed) + " Deep: "+ std::to_string(ball.deep) +")");
     text4.setText("Bar (Speed: "+ std::to_string(bar.speed) + " Width: "+ std::to_string(bar.rect.w)+")");
@@ -381,7 +381,7 @@ bool Game::moveToRightBar(){
 }
 
 /**
-* @brief Move the bar to the left.
+* @brief Moves the bar to the left.
 */
 bool Game::moveToLeftBar(){
     bool condition = bar.rect.x -bar.speed > 10;
