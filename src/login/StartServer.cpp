@@ -7,16 +7,9 @@ int socketPortServer;
 string newMessage;
 
 /**
- *
- * @param userInput
- */
-void StartServer::setNewMessage(string userInput) {
-    newMessage=move(userInput);
-}
-
-/**
- *
- * @return
+ * This method initiates the communication client-server. It runs in a separated
+ * thread from the main thread and the gameInit thread.
+ * @return a null pointer to indicate that the process is over.
  */
 void * serverInit(void *){
     try {
@@ -30,8 +23,9 @@ void * serverInit(void *){
 }
 
 /**
- *
- * @return
+ * This method initiates the game interface. It runs in a separated
+ * thread from the main thread and the serverInit thread.
+ * @return a null pointer to indicate that the process is over.
  */
 void * gameInit(void*){
     breakout->run();
@@ -39,7 +33,9 @@ void * gameInit(void*){
 }
 
 /**
- *
+ * This method is the constructor for the Start Server class, this method
+ * initiates the GUI, asks the user for the socket that will be used and
+ * use this socket to initiate the communication.
  */
 StartServer::StartServer() {
 

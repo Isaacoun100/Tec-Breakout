@@ -13,20 +13,17 @@
 using namespace std;
 
 /**
- *
+ * This class will initiate the server GUI as well as the logic for the sockets
+ * and threads
  */
 class StartServer {
 public:
     string newMessage;
 
     /**
-     *
-     * @param userInput
-     */
-    void setNewMessage(string userInput);
-
-    /**
-     *
+     * This method is the constructor for the StartServer class, this method
+     * initiates the GUI, asks the user for the socket that will be used and
+     * use this socket to initiate the communication.
      */
     StartServer();
 };
