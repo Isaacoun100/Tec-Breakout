@@ -10,10 +10,16 @@
 
 using namespace std;
 
+/**
+ * This class will initiate the client GUI as well as the logic for the sockets
+ * and threads
+ */
 class StartClient {
 public:
     /**
-     *
+     * This method is the constructor for the StartClient class, this method
+     * initiates the GUI, asks the user for the socket that will be used and
+     * use this socket to initiate the communication.
      */
     StartClient();
 };

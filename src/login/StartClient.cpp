@@ -4,8 +4,9 @@ SocketClient* clientConnection;
 PlayerGUI* playerGui = new PlayerGUI();
 
 /**
- *
- * @return
+ * This method initiates the communication client-server. It runs in a separated
+ * thread from the main thread and the StartPlayerGUI thread.
+ * @return a null pointer to indicate that the process is over.
  */
 void * ClientInit(void *){
 
@@ -20,8 +21,8 @@ void * ClientInit(void *){
 }
 
 /**
- *
- * @return
+ * This method initiates GUI for the user to input and control the bar in the game
+ * @return a null pointer to indicate that the process is over.
  */
 void * StartPlayerGUI(void *) {
 
@@ -35,7 +36,9 @@ void * StartPlayerGUI(void *) {
 }
 
 /**
- *
+ * This method is the constructor for the StartClient class, this method
+ * initiates the GUI, asks the user for the socket that will be used and
+ * use this socket to initiate the communication.
  */
 StartClient::StartClient() {
     int socketPortClient;
