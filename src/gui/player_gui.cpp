@@ -16,8 +16,8 @@ void PlayerGUI::input() {
         if(e.type==SDL_QUIT) {exit(0);}
     }
 
-    if(keyboardState[SDL_SCANCODE_ESCAPE]){
-        //txtInput="E";
+    if(keyboardState[SDL_SCANCODE_E]){
+        txtInput="E";
     }
 
     if(keyboardState[SDL_SCANCODE_LEFT]) {
