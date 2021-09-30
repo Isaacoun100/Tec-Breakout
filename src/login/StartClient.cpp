@@ -87,7 +87,6 @@ StartClient::StartClient() {
 
             if(message=="E"){
                 clientConnection->setMessage("E");
-                playerGui->stop();
                 break;
             }
 
