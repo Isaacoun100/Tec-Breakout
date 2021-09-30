@@ -13,11 +13,11 @@ void PlayerGUI::input() {
     SDL_Event e;
     const Uint8 *keyboardState = SDL_GetKeyboardState(nullptr);
     while(SDL_PollEvent(&e)){
-        if(e.type==SDL_QUIT) {stop();}
+        if(e.type==SDL_QUIT) {exit(0);}
     }
 
     if(keyboardState[SDL_SCANCODE_ESCAPE]){
-        txtInput="exit";
+        //txtInput="E";
     }
 
     if(keyboardState[SDL_SCANCODE_LEFT]) {
