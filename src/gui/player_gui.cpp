@@ -17,7 +17,7 @@ void PlayerGUI::input() {
     }
 
     if(keyboardState[SDL_SCANCODE_ESCAPE]){
-        txtInput="E";
+        txtInput="exit";
     }
 
     if(keyboardState[SDL_SCANCODE_LEFT]) {
@@ -25,7 +25,7 @@ void PlayerGUI::input() {
     }
 
     if(keyboardState[SDL_SCANCODE_RIGHT]){
-        txtInput ="exit";
+        txtInput ="R";
     }
 
 }
