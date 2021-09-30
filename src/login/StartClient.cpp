@@ -85,11 +85,13 @@ StartClient::StartClient() {
         this_thread::sleep_for(std::chrono::milliseconds(10));
         if(!message.empty()){
 
+            clientConnection->setMessage(message.c_str());
+
             if(message=="E"){
                 playerGui->stop();
                 break;
             }
-            clientConnection->setMessage(message.c_str());
+
             playerGui->txtInput.clear();
             message.clear();
 
