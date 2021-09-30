@@ -92,6 +92,7 @@ void * SocketServer::clientManager(void *obj) {
         }
 
         ReadWrite().writeFile(message);
+        cout<<message<<endl;
         if(message=="exit") break;
     }
 
