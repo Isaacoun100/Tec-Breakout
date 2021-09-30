@@ -12,11 +12,22 @@
 
 using namespace std;
 
+/**
+ *
+ */
 class StartServer {
 public:
     string newMessage;
 
+    /**
+     *
+     * @param userInput
+     */
     void setNewMessage(string userInput);
+
+    /**
+     *
+     */
     StartServer();
 };
 

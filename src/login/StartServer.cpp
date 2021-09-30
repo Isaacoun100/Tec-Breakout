@@ -6,10 +6,18 @@ Game* breakout;
 int socketPortServer;
 string newMessage;
 
+/**
+ *
+ * @param userInput
+ */
 void StartServer::setNewMessage(string userInput) {
     newMessage=move(userInput);
 }
 
+/**
+ *
+ * @return
+ */
 void * serverInit(void *){
     try {
         serverConnection->setServerSocket(socketPortServer);
@@ -21,11 +29,18 @@ void * serverInit(void *){
     return nullptr;
 }
 
+/**
+ *
+ * @return
+ */
 void * gameInit(void*){
     breakout->run();
     return nullptr;
 }
 
+/**
+ *
+ */
 StartServer::StartServer() {
 
     string option;
