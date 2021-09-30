@@ -1,0 +1,50 @@
+\doxysection{brick.\+h}
+\label{brick_8h_source}\index{src/gui/brick.h@{src/gui/brick.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by carlo on 20/9/21.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef TECBREAKOUT\_BRICK\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define TECBREAKOUT\_BRICK\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}entity\_sdl.h"{}}}
+\DoxyCodeLine{9 \textcolor{comment}{//\#include "{}include\_sdl.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{15 \textcolor{keyword}{enum} TypeBrick\{}
+\DoxyCodeLine{16     Commun =0,}
+\DoxyCodeLine{17     Double=1,}
+\DoxyCodeLine{18     Triple=2,}
+\DoxyCodeLine{19     Surprise=3,}
+\DoxyCodeLine{20     Deep=4,}
+\DoxyCodeLine{21     Inside=5,}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{28 \textcolor{keyword}{class }Brick: \textcolor{keyword}{public} EntitySDL\{}
+\DoxyCodeLine{29 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{34     Brick();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{39     TypeBrick type;}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} value\{\};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{int} hits\{\};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{int} isAlive = \textcolor{keyword}{true};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{59     \textcolor{keywordtype}{int} isFront = \textcolor{keyword}{false};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{67     Brick(\textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h, TypeBrick type);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{keyword}{private}:}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} setFeatureBrick();}
+\DoxyCodeLine{76 \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//TECBREAKOUT\_BRICK\_H}}
+
+\end{DoxyCode}

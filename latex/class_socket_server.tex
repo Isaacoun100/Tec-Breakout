@@ -1,0 +1,94 @@
+\doxysection{Socket\+Server Class Reference}
+\label{class_socket_server}\index{SocketServer@{SocketServer}}
+
+
+{\ttfamily \#include $<$Socket\+Server.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Socket\+Server} ()
+\item 
+void \textbf{ set\+Server\+Socket} (int server\+Socket)
+\item 
+void \textbf{ run} ()
+\item 
+void \textbf{ set\+Message} (const char $\ast$msn)
+\item 
+bool \textbf{ link\+Kernel} ()
+\item 
+bool \textbf{ create\+Connection} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_socket_server_a0aa7519d25ce102a363b4492f27e7d68}} 
+int {\bfseries server\+Socket}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class creates the server so that the client can connect and send the information through the socket to the server instance. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_socket_server_a262ba93dc8ad71b260fb75124b3453ee}} 
+\index{SocketServer@{SocketServer}!SocketServer@{SocketServer}}
+\index{SocketServer@{SocketServer}!SocketServer@{SocketServer}}
+\doxysubsubsection{SocketServer()}
+{\footnotesize\ttfamily Socket\+Server\+::\+Socket\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is the constructor for the \doxyref{Socket\+Server}{p.}{class_socket_server} class, this clas will executed when the class is called. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_socket_server_aab4a0329555e754222eec9dd08ef5068}} 
+\index{SocketServer@{SocketServer}!createConnection@{createConnection}}
+\index{createConnection@{createConnection}!SocketServer@{SocketServer}}
+\doxysubsubsection{createConnection()}
+{\footnotesize\ttfamily bool Socket\+Server\+::create\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create\+Connection will test that the server information is correct, and will try to open a port \begin{DoxyReturn}{Returns}
+a boolean value based on whether or not the connection was succesfull. 
+\end{DoxyReturn}
+\mbox{\label{class_socket_server_a41dfc73442a9b58ae5c7bf527ebc9ecf}} 
+\index{SocketServer@{SocketServer}!linkKernel@{linkKernel}}
+\index{linkKernel@{linkKernel}!SocketServer@{SocketServer}}
+\doxysubsubsection{linkKernel()}
+{\footnotesize\ttfamily bool Socket\+Server\+::link\+Kernel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method will test that the information brinded by the client is correct, if it is correct then the method will return true, if not, is going to return false. \begin{DoxyReturn}{Returns}
+a boolean value based on whether or not the link can be made. 
+\end{DoxyReturn}
+\mbox{\label{class_socket_server_afac9dc85dd014e6288551aa49f74f63f}} 
+\index{SocketServer@{SocketServer}!run@{run}}
+\index{run@{run}!SocketServer@{SocketServer}}
+\doxysubsubsection{run()}
+{\footnotesize\ttfamily void Socket\+Server\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is the method that will open the server and receive the messages, this method should be executed when is clear that the socket is available. \mbox{\label{class_socket_server_a9364a97b7d54e6a1d25cde3b8ed43812}} 
+\index{SocketServer@{SocketServer}!setMessage@{setMessage}}
+\index{setMessage@{setMessage}!SocketServer@{SocketServer}}
+\doxysubsubsection{setMessage()}
+{\footnotesize\ttfamily void Socket\+Server\+::set\+Message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msn }\end{DoxyParamCaption})}
+
+Set\+Message is a method that sends the incoming constant char to the fisrt client in the clients vector 
+\begin{DoxyParams}{Parameters}
+{\em msn} & is the variable that contains the message that is going to be sended to the client. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_socket_server_ac30f9969d9d8c1d945bb5dafcbf9d9fa}} 
+\index{SocketServer@{SocketServer}!setServerSocket@{setServerSocket}}
+\index{setServerSocket@{setServerSocket}!SocketServer@{SocketServer}}
+\doxysubsubsection{setServerSocket()}
+{\footnotesize\ttfamily void Socket\+Server\+::set\+Server\+Socket (\begin{DoxyParamCaption}\item[{int}]{server\+Socket }\end{DoxyParamCaption})}
+
+This method is a setter for the integer variable called server\+Socket 
+\begin{DoxyParams}{Parameters}
+{\em server\+Socket} & is the ip in which the server will be allocated in \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/socket/Socket\+Server.\+h\item 
+src/socket/Socket\+Server.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,212 @@
+\doxysection{Primitive\+Window Class Reference}
+\label{class_primitive_window}\index{PrimitiveWindow@{PrimitiveWindow}}
+
+
+The Primitive Window for the program.  
+
+
+
+
+{\ttfamily \#include $<$primitive\+\_\+window.\+h$>$}
+
+Inheritance diagram for Primitive\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_primitive_window}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_primitive_window_a4f7bd2784149aa24a4e2802cde89a928}} 
+void {\bfseries init\+Window} ()
+\begin{DoxyCompactList}\small\item\em The default constructor. \end{DoxyCompactList}\item 
+void \textbf{ init\+Window} (string title, int \textbf{ width}, int \textbf{ height})
+\begin{DoxyCompactList}\small\item\em The constructor change with change tittle and dimensions. \end{DoxyCompactList}\item 
+virtual void \textbf{ run} ()
+\begin{DoxyCompactList}\small\item\em Runs the window. \end{DoxyCompactList}\item 
+\mbox{\label{class_primitive_window_aa16899924a4473e5d2234ff244c053d9}} 
+void {\bfseries stop} ()
+\begin{DoxyCompactList}\small\item\em Stop run the window. \end{DoxyCompactList}\item 
+void \textbf{ set\+Background\+Color} (int red, int green, int blue, int transparency)
+\begin{DoxyCompactList}\small\item\em Set the background\+Color. \end{DoxyCompactList}\item 
+\mbox{\label{class_primitive_window_a14cbee19f7fa091e3afc814512734e04}} 
+{\bfseries $\sim$\+Primitive\+Window} ()
+\begin{DoxyCompactList}\small\item\em The destroy method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ running} = false
+\item 
+int \textbf{ width} =500
+\item 
+int \textbf{ height} =500
+\item 
+\mbox{\label{class_primitive_window_af9a2fa3f6ef7b7b2e6e0dce1c4048294}} 
+string {\bfseries title} = \char`\"{}Primitive\+Window\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_primitive_window_a67936327737f574c169b558e9e5c016a}} 
+virtual void {\bfseries loop} ()
+\begin{DoxyCompactList}\small\item\em Is loop of the window. \end{DoxyCompactList}\item 
+\mbox{\label{class_primitive_window_aaf9f7b134178895820208163c829e208}} 
+virtual void {\bfseries input} ()
+\begin{DoxyCompactList}\small\item\em The input keys for the window. \end{DoxyCompactList}\item 
+\mbox{\label{class_primitive_window_a8df4442e497a329fef1f8d9686fe637b}} 
+virtual void {\bfseries update} ()
+\begin{DoxyCompactList}\small\item\em Updates the objects and the window. \end{DoxyCompactList}\item 
+\mbox{\label{class_primitive_window_a67e2729bcc684397aa7d3248fb8d9441}} 
+virtual void {\bfseries render} ()
+\begin{DoxyCompactList}\small\item\em Render the window and the objects in the window. \end{DoxyCompactList}\item 
+\mbox{\label{class_primitive_window_a940d3b22496ec812f539b8d84e4e616d}} 
+void {\bfseries refresh} ()
+\begin{DoxyCompactList}\small\item\em Manage frames task refresh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window $\ast$ \textbf{ window} \{\}
+\item 
+SDL\+\_\+\+Renderer $\ast$ \textbf{ renderer} \{\}
+\item 
+int \textbf{ frame\+Count} \{\}
+\item 
+int \textbf{ last\+Frame} \{\}
+\item 
+TTF\+\_\+\+Font $\ast$ \textbf{ font1}
+\item 
+int \textbf{ timer\+FPS} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Primitive Window for the program. 
+
+\begin{DoxyAuthor}{Author}
+Carlos A. Mata C. \texorpdfstring{$<$}{<}carlos.\+andres12001 @ gmail.\+com\texorpdfstring{$>$}{>} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_primitive_window_a6cb700d8187931f2aaab32d41f6d1beb}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!initWindow@{initWindow}}
+\index{initWindow@{initWindow}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{initWindow()}
+{\footnotesize\ttfamily void Primitive\+Window\+::init\+Window (\begin{DoxyParamCaption}\item[{string}]{title,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+The constructor change with change tittle and dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Assign the title of the window. \\
+\hline
+{\em dimensions} & Assign the dimensions of the window.\\
+\hline
+{\em title} & Assign the title of the window. \\
+\hline
+{\em width} & Assign the dimension of the window. \\
+\hline
+{\em height} & Assign the dimension of the window. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_primitive_window_a8a30dffa3d6c1d55b5c9ea44bcd21426}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!run@{run}}
+\index{run@{run}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{run()}
+{\footnotesize\ttfamily void Primitive\+Window\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Runs the window. 
+
+
+
+Reimplemented in \textbf{ Game} \doxyref{}{p.}{class_game_a11dd04c2c94caa95d4f819e8a3f49649}, and \textbf{ Player\+GUI} \doxyref{}{p.}{class_player_g_u_i_a304fd9bcff7961aa21c8fdfe49e6638e}.
+
+\mbox{\label{class_primitive_window_ac186877c69750ed0c2e250157a64e8b3}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!setBackgroundColor@{setBackgroundColor}}
+\index{setBackgroundColor@{setBackgroundColor}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{setBackgroundColor()}
+{\footnotesize\ttfamily void Primitive\+Window\+::set\+Background\+Color (\begin{DoxyParamCaption}\item[{int}]{red,  }\item[{int}]{green,  }\item[{int}]{blue,  }\item[{int}]{transparency }\end{DoxyParamCaption})}
+
+
+
+Set the background\+Color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em red} & RGB color red. \\
+\hline
+{\em green} & RBG color green. \\
+\hline
+{\em blue} & RGB color blue. \\
+\hline
+{\em transparency} & RGB transparency. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_primitive_window_a7a0163d551748772fd2aff2a1be55a3c}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!font1@{font1}}
+\index{font1@{font1}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{font1}
+{\footnotesize\ttfamily TTF\+\_\+\+Font$\ast$ Primitive\+Window\+::font1\hspace{0.3cm}{\ttfamily [protected]}}
+
+The font on the window. \mbox{\label{class_primitive_window_a7fdad43ae35046a3681166d03c0c294e}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!frameCount@{frameCount}}
+\index{frameCount@{frameCount}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{frameCount}
+{\footnotesize\ttfamily int Primitive\+Window\+::frame\+Count \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+Count the numbers of frames. \mbox{\label{class_primitive_window_abe3e8f4de4411e7a4f2c1e4993c6683d}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!height@{height}}
+\index{height@{height}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{height}
+{\footnotesize\ttfamily int Primitive\+Window\+::height =500}
+
+The height of the window. \mbox{\label{class_primitive_window_ae571c7f07125e50c977581db340d7dce}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!lastFrame@{lastFrame}}
+\index{lastFrame@{lastFrame}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{lastFrame}
+{\footnotesize\ttfamily int Primitive\+Window\+::last\+Frame \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+The last frame that was counted. \mbox{\label{class_primitive_window_aba17af109ede1c5ff07215e4fe6e66ab}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!renderer@{renderer}}
+\index{renderer@{renderer}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{renderer}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer$\ast$ Primitive\+Window\+::renderer \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+The renderf of the window. \mbox{\label{class_primitive_window_aaff63df8c4a9a3f29b72e1e4697888f8}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!running@{running}}
+\index{running@{running}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{running}
+{\footnotesize\ttfamily bool Primitive\+Window\+::running = false}
+
+The run var of the loop. \mbox{\label{class_primitive_window_a0183410bd5a4eeebfcce9fa7f8dce4bc}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!timerFPS@{timerFPS}}
+\index{timerFPS@{timerFPS}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{timerFPS}
+{\footnotesize\ttfamily int Primitive\+Window\+::timer\+FPS \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+Count the time of the frames. \mbox{\label{class_primitive_window_a8748dd3bbf449f8157604b7269c25cc8}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!width@{width}}
+\index{width@{width}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{width}
+{\footnotesize\ttfamily int Primitive\+Window\+::width =500}
+
+The width of the window. \mbox{\label{class_primitive_window_af1e1f5d10358b5cdf4b91942a0526be2}} 
+\index{PrimitiveWindow@{PrimitiveWindow}!window@{window}}
+\index{window@{window}!PrimitiveWindow@{PrimitiveWindow}}
+\doxysubsubsection{window}
+{\footnotesize\ttfamily SDL\+\_\+\+Window$\ast$ Primitive\+Window\+::window \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+The window of the GUI. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/\textbf{ primitive\+\_\+window.\+h}\item 
+src/gui/\textbf{ primitive\+\_\+window.\+cpp}\end{DoxyCompactItemize}

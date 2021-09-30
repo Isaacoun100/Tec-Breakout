@@ -1,0 +1,71 @@
+\doxysection{primitive\+\_\+window.\+h}
+\label{primitive__window_8h_source}\index{src/gui/primitive\_window.h@{src/gui/primitive\_window.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef TEC\_BREAKOUT\_PRIMATIVE\_WINDOW\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define TEC\_BREAKOUT\_PRIMATIVE\_WINDOW\_H}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}SDL2/SDL.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}SDL\_ttf.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define FONT\_SIZE 24}}
+\DoxyCodeLine{14 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{20 \textcolor{keyword}{class }PrimitiveWindow\{}
+\DoxyCodeLine{21 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{25     SDL\_Window *window\{\};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30     SDL\_Renderer *renderer\{\};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} frameCount\{\};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} lastFrame\{\};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{45     TTF\_Font *font1;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} timerFPS\{\};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keyword}{virtual} }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} loop();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keyword}{virtual} }
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} input();}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{65     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} update();}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{keyword}{virtual} }
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} render();}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} refresh();}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{keyword}{public}:}
+\DoxyCodeLine{81     \textcolor{keywordtype}{bool} running = \textcolor{keyword}{false};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{86     \textcolor{keywordtype}{int} width =500;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{int} height=500;}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{comment}{/*}}
+\DoxyCodeLine{94 \textcolor{comment}{     * The title of the window.}}
+\DoxyCodeLine{95 \textcolor{comment}{     */}}
+\DoxyCodeLine{96     \textcolor{keywordtype}{string} title = \textcolor{stringliteral}{"{}PrimitiveWindow"{}};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{void} initWindow();}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{108     \textcolor{keywordtype}{void} initWindow(\textcolor{keywordtype}{string} title, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keyword}{virtual} }
+\DoxyCodeLine{113     \textcolor{keywordtype}{void} run();}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{void} stop();}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{127     \textcolor{keywordtype}{void} setBackgroundColor(\textcolor{keywordtype}{int} red, \textcolor{keywordtype}{int} green, \textcolor{keywordtype}{int} blue, \textcolor{keywordtype}{int} transparency);}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{132     \string~PrimitiveWindow();}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134 \};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//TEC\_BREAKOUT\_PRIMATIVE\_WINDOW\_H}}
+
+\end{DoxyCode}

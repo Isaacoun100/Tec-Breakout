@@ -1,0 +1,202 @@
+\doxysection{Text\+SDL Class Reference}
+\label{class_text_s_d_l}\index{TextSDL@{TextSDL}}
+
+
+The way to create text in SDL2 with classes.  
+
+
+
+
+{\ttfamily \#include $<$text\+\_\+sdl.\+h$>$}
+
+Inheritance diagram for Text\+SDL\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_text_s_d_l}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_text_s_d_l_afc8f31702b6d6bd03cc6f0a82d3b5f4d}} 
+{\bfseries Text\+SDL} ()
+\begin{DoxyCompactList}\small\item\em The default constructor of the class. \end{DoxyCompactList}\item 
+\textbf{ Text\+SDL} (const TTF\+\_\+\+Font \&\textbf{ font})
+\begin{DoxyCompactList}\small\item\em The constructor if the class width the type of font. \end{DoxyCompactList}\item 
+\textbf{ Text\+SDL} (const string \&\textbf{ text}, int \textbf{ x}, int \textbf{ y}, int red, int green, int blue, TTF\+\_\+\+Font $\ast$\textbf{ font})
+\begin{DoxyCompactList}\small\item\em The constructor of the class. \end{DoxyCompactList}\item 
+void \textbf{ set\+Text} (const string \&\textbf{ text})
+\begin{DoxyCompactList}\small\item\em Set the text of the object. \end{DoxyCompactList}\item 
+void \textbf{ set\+Color} (int red, int green, int blue)
+\begin{DoxyCompactList}\small\item\em Set the color of the text. \end{DoxyCompactList}\item 
+void \textbf{ draw} (SDL\+\_\+\+Renderer $\ast$renderer) override
+\begin{DoxyCompactList}\small\item\em This method draw fot the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \textbf{ text}
+\item 
+SDL\+\_\+\+Rect \textbf{ rect}
+\item 
+int \textbf{ x}
+\item 
+int \textbf{ y}
+\item 
+SDL\+\_\+\+Color \textbf{ color}
+\item 
+TTF\+\_\+\+Font $\ast$ \textbf{ font}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The way to create text in SDL2 with classes. 
+
+\begin{DoxyAuthor}{Author}
+Carlos A. Mata C. \texorpdfstring{$<$}{<}carlos.\+andres12001 @ gmail.\+com\texorpdfstring{$>$}{>} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_text_s_d_l_a1f9c1953e768fd5cbde51f51b8bea6ad}} 
+\index{TextSDL@{TextSDL}!TextSDL@{TextSDL}}
+\index{TextSDL@{TextSDL}!TextSDL@{TextSDL}}
+\doxysubsubsection{TextSDL()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Text\+SDL\+::\+Text\+SDL (\begin{DoxyParamCaption}\item[{const TTF\+\_\+\+Font \&}]{font }\end{DoxyParamCaption})}
+
+
+
+The constructor if the class width the type of font. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The font of the text. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_text_s_d_l_a5ff5f525d17ef317c0aac2e7de9dc6e9}} 
+\index{TextSDL@{TextSDL}!TextSDL@{TextSDL}}
+\index{TextSDL@{TextSDL}!TextSDL@{TextSDL}}
+\doxysubsubsection{TextSDL()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Text\+SDL\+::\+Text\+SDL (\begin{DoxyParamCaption}\item[{const string \&}]{text,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{red,  }\item[{int}]{green,  }\item[{int}]{blue,  }\item[{TTF\+\_\+\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+
+
+The constructor of the class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & The text of the object. \\
+\hline
+{\em x} & The position x in the window. \\
+\hline
+{\em y} & The position y in the window. \\
+\hline
+{\em red} & The red RGB. \\
+\hline
+{\em green} & The green RBG. \\
+\hline
+{\em blue} & The blue RGB. \\
+\hline
+{\em font} & The font of the text. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_text_s_d_l_a2e3da005d3e9144a8261af4589f85890}} 
+\index{TextSDL@{TextSDL}!draw@{draw}}
+\index{draw@{draw}!TextSDL@{TextSDL}}
+\doxysubsubsection{draw()}
+{\footnotesize\ttfamily void Text\+SDL\+::draw (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This method draw fot the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & renderer of the window. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \textbf{ Object\+SDL} \doxyref{}{p.}{class_object_s_d_l_ae957c2b79e11ebf3829ff64fb55723ac}.
+
+\mbox{\label{class_text_s_d_l_a7bd675f2f6fce33cb71688ffbf58b81a}} 
+\index{TextSDL@{TextSDL}!setColor@{setColor}}
+\index{setColor@{setColor}!TextSDL@{TextSDL}}
+\doxysubsubsection{setColor()}
+{\footnotesize\ttfamily void Text\+SDL\+::set\+Color (\begin{DoxyParamCaption}\item[{int}]{red,  }\item[{int}]{green,  }\item[{int}]{blue }\end{DoxyParamCaption})}
+
+
+
+Set the color of the text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em red} & The red RGB. \\
+\hline
+{\em green} & The green RBG. \\
+\hline
+{\em blue} & The blue RGB. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_text_s_d_l_a5af8acbacc700f435b790dcc76fde24c}} 
+\index{TextSDL@{TextSDL}!setText@{setText}}
+\index{setText@{setText}!TextSDL@{TextSDL}}
+\doxysubsubsection{setText()}
+{\footnotesize\ttfamily void Text\+SDL\+::set\+Text (\begin{DoxyParamCaption}\item[{const string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Set the text of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Set the text of the object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_text_s_d_l_a135a6cf12c72eb689965a5e5256ad664}} 
+\index{TextSDL@{TextSDL}!color@{color}}
+\index{color@{color}!TextSDL@{TextSDL}}
+\doxysubsubsection{color}
+{\footnotesize\ttfamily SDL\+\_\+\+Color Text\+SDL\+::color}
+
+The color of the text. \mbox{\label{class_text_s_d_l_a0d739a65e8fb3fff2599cc05501e5223}} 
+\index{TextSDL@{TextSDL}!font@{font}}
+\index{font@{font}!TextSDL@{TextSDL}}
+\doxysubsubsection{font}
+{\footnotesize\ttfamily TTF\+\_\+\+Font$\ast$ Text\+SDL\+::font}
+
+THe font of the text. \mbox{\label{class_text_s_d_l_a0cdcbcf28a6967fddc682a1eb1d55c82}} 
+\index{TextSDL@{TextSDL}!rect@{rect}}
+\index{rect@{rect}!TextSDL@{TextSDL}}
+\doxysubsubsection{rect}
+{\footnotesize\ttfamily SDL\+\_\+\+Rect Text\+SDL\+::rect}
+
+The size of the object. \mbox{\label{class_text_s_d_l_a717e723da941528c3a546fc75e11faad}} 
+\index{TextSDL@{TextSDL}!text@{text}}
+\index{text@{text}!TextSDL@{TextSDL}}
+\doxysubsubsection{text}
+{\footnotesize\ttfamily string Text\+SDL\+::text}
+
+The data of the text. \mbox{\label{class_text_s_d_l_ac02bce494aab1e6ac2d95d862f9092d7}} 
+\index{TextSDL@{TextSDL}!x@{x}}
+\index{x@{x}!TextSDL@{TextSDL}}
+\doxysubsubsection{x}
+{\footnotesize\ttfamily int Text\+SDL\+::x}
+
+The position in x in the window. \mbox{\label{class_text_s_d_l_ac773e0f141699d6ecaf4d4a77e1cb846}} 
+\index{TextSDL@{TextSDL}!y@{y}}
+\index{y@{y}!TextSDL@{TextSDL}}
+\doxysubsubsection{y}
+{\footnotesize\ttfamily int Text\+SDL\+::y}
+
+The position in y in the window. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/text\+\_\+sdl.\+h\item 
+src/gui/text\+\_\+sdl.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,50 @@
+\doxysection{text\+\_\+sdl.\+h}
+\label{text__sdl_8h_source}\index{src/gui/text\_sdl.h@{src/gui/text\_sdl.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by carlo on 18/9/21.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef TECBREAKOUT\_TEXT\_SDL\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define TECBREAKOUT\_TEXT\_SDL\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}object\_sdl.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}SDL2/SDL.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}SDL2/SDL\_ttf.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}string"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }TextSDL:\textcolor{keyword}{public} ObjectSDL\{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{string} text;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30     SDL\_Rect rect;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} x;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} y;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{45     SDL\_Color color;}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50     TTF\_Font *font;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{55     TextSDL();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{61     TextSDL(\textcolor{keyword}{const} TTF\_Font \&font);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{73     TextSDL(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&text, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} red, \textcolor{keywordtype}{int} green, \textcolor{keywordtype}{int} blue, TTF\_Font *font);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{void} setText(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&text);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{void} setColor(\textcolor{keywordtype}{int} red, \textcolor{keywordtype}{int} green, \textcolor{keywordtype}{int} blue);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{93     \textcolor{keywordtype}{void} draw(SDL\_Renderer *renderer) \textcolor{keyword}{override};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \};}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//TECBREAKOUT\_TEXT\_SDL\_H}}
+
+\end{DoxyCode}
