@@ -12,6 +12,9 @@ using namespace std;
 
 class StartClient {
 public:
+    /**
+     *
+     */
     StartClient();
 };
 

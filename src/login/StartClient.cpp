@@ -3,6 +3,10 @@
 SocketClient* clientConnection;
 PlayerGUI* playerGui = new PlayerGUI();
 
+/**
+ *
+ * @return
+ */
 void * ClientInit(void *){
 
     try {
@@ -15,6 +19,10 @@ void * ClientInit(void *){
     return nullptr;
 }
 
+/**
+ *
+ * @return
+ */
 void * StartPlayerGUI(void *) {
 
     try {
@@ -26,6 +34,9 @@ void * StartPlayerGUI(void *) {
 
 }
 
+/**
+ *
+ */
 StartClient::StartClient() {
     int socketPortClient;
     string ipAddress;

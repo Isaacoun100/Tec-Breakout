@@ -6,8 +6,14 @@
 #include "StartClient.h"
 using namespace std;
 
+/**
+ *
+ */
 class Login {
 public:
+    /**
+     *
+     */
     Login();
 };
 
