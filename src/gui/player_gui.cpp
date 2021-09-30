@@ -16,7 +16,7 @@ void PlayerGUI::input() {
         if(e.type==SDL_QUIT) {exit(0);}
     }
 
-    if(keyboardState[SDL_SCANCODE_E]){
+    if(keyboardState[SDLK_e]){
         txtInput="E";
     }
 
