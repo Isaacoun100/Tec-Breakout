@@ -88,7 +88,7 @@ StartClient::StartClient() {
             clientConnection->setMessage(message.c_str());
 
             if(message=="E"){
-                this_thread::sleep_for(std::chrono::milliseconds(10));
+                clientConnection->setMessage("E");
                 playerGui->stop();
                 break;
             }
