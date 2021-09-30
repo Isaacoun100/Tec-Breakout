@@ -25,7 +25,7 @@ void PlayerGUI::input() {
     }
 
     if(keyboardState[SDL_SCANCODE_RIGHT]){
-        txtInput ="R";
+        txtInput ="exit";
     }
 
 }
