@@ -1,0 +1,53 @@
+\doxysection{Read\+Write Class Reference}
+\label{class_read_write}\index{ReadWrite@{ReadWrite}}
+
+
+{\ttfamily \#include $<$Read\+Write.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ clear\+File} ()
+\item 
+string \textbf{ read\+File} ()
+\item 
+void \textbf{ write\+File} (string result)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxyref{Read\+Write}{p.}{class_read_write} class will read, write and clear an specific file to save it as a way to communicate between two threads that can\textquotesingle{}t otherwise communicate. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_read_write_a7a275be9e91caa91996af403029eae95}} 
+\index{ReadWrite@{ReadWrite}!clearFile@{clearFile}}
+\index{clearFile@{clearFile}!ReadWrite@{ReadWrite}}
+\doxysubsubsection{clearFile()}
+{\footnotesize\ttfamily void Read\+Write\+::clear\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method clears all contents in the temporal file that is used to communicate between the two working threads. It rewrites the contents of the tmp.\+txt to an empty thus clearing the file. \mbox{\label{class_read_write_a4d6c3cbb47a959ce317af95ac54068be}} 
+\index{ReadWrite@{ReadWrite}!readFile@{readFile}}
+\index{readFile@{readFile}!ReadWrite@{ReadWrite}}
+\doxysubsubsection{readFile()}
+{\footnotesize\ttfamily string Read\+Write\+::read\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method will read all of the contents of the temp.\+txt file that was created to communicate the two thread and will return a string with its contents. \begin{DoxyReturn}{Returns}
+a string contaning the data in the tmp.\+txt 
+\end{DoxyReturn}
+\mbox{\label{class_read_write_aed72f00ab24fc277cc3416d6684d429a}} 
+\index{ReadWrite@{ReadWrite}!writeFile@{writeFile}}
+\index{writeFile@{writeFile}!ReadWrite@{ReadWrite}}
+\doxysubsubsection{writeFile()}
+{\footnotesize\ttfamily void Read\+Write\+::write\+File (\begin{DoxyParamCaption}\item[{string}]{result }\end{DoxyParamCaption})}
+
+This methtod will write the contents of the string result variable into the tmp.\+txt file, this is used when the socket receives information. 
+\begin{DoxyParams}{Parameters}
+{\em result} & the string that contains the data that is going to be written. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/temp/Read\+Write.\+h\item 
+src/temp/Read\+Write.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,117 @@
+\doxysection{Brick Class Reference}
+\label{class_brick}\index{Brick@{Brick}}
+
+
+The object brick of the game.  
+
+
+
+
+{\ttfamily \#include $<$brick.\+h$>$}
+
+Inheritance diagram for Brick\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_brick}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Brick} ()
+\item 
+\textbf{ Brick} (int w, int h, Type\+Brick \textbf{ type})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Type\+Brick \textbf{ type}
+\item 
+int \textbf{ value} \{\}
+\item 
+int \textbf{ hits} \{\}
+\item 
+int \textbf{ is\+Alive} = true
+\item 
+int \textbf{ is\+Front} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The object brick of the game. 
+
+\begin{DoxyAuthor}{Author}
+Carlos A. Mata C. \texorpdfstring{$<$}{<}carlos.\+andres12001 @ gmail.\+com\texorpdfstring{$>$}{>} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_brick_aa29d678c3d901c7b18cbc3a27a51be17}} 
+\index{Brick@{Brick}!Brick@{Brick}}
+\index{Brick@{Brick}!Brick@{Brick}}
+\doxysubsubsection{Brick()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Brick\+::\+Brick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+THe default constructor. \mbox{\label{class_brick_ac9ffc05348f004677a5a02ab68011a78}} 
+\index{Brick@{Brick}!Brick@{Brick}}
+\index{Brick@{Brick}!Brick@{Brick}}
+\doxysubsubsection{Brick()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Brick\+::\+Brick (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h,  }\item[{Type\+Brick}]{type }\end{DoxyParamCaption})}
+
+The constructor with w, h, y param. 
+\begin{DoxyParams}{Parameters}
+{\em w} & The width of the object. \\
+\hline
+{\em h} & The height of the object. \\
+\hline
+{\em type} & The type of the brick.\\
+\hline
+\end{DoxyParams}
+The constructor with w, h, y param. 
+\begin{DoxyParams}{Parameters}
+{\em w} & The width of the object. \\
+\hline
+{\em h} & The height of the object. \\
+\hline
+{\em y} & The position y of the object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_brick_a2cb4388212a739857daa231fbfff6fae}} 
+\index{Brick@{Brick}!hits@{hits}}
+\index{hits@{hits}!Brick@{Brick}}
+\doxysubsubsection{hits}
+{\footnotesize\ttfamily int Brick\+::hits \{\}}
+
+How many hits the brick support, \mbox{\label{class_brick_af825c59a401bc4b445dd83ffddd995f1}} 
+\index{Brick@{Brick}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!Brick@{Brick}}
+\doxysubsubsection{isAlive}
+{\footnotesize\ttfamily int Brick\+::is\+Alive = true}
+
+Is the brick is alive. \mbox{\label{class_brick_a90509309995f1d8b4b18c40723059817}} 
+\index{Brick@{Brick}!isFront@{isFront}}
+\index{isFront@{isFront}!Brick@{Brick}}
+\doxysubsubsection{isFront}
+{\footnotesize\ttfamily int Brick\+::is\+Front = false}
+
+Is the brick is the last row of the column, \mbox{\label{class_brick_af991f820d4fd956431ca515453e51558}} 
+\index{Brick@{Brick}!type@{type}}
+\index{type@{type}!Brick@{Brick}}
+\doxysubsubsection{type}
+{\footnotesize\ttfamily Type\+Brick Brick\+::type}
+
+The type of the brick. \mbox{\label{class_brick_a5bbaf8b0f873dc787070ec5b04666259}} 
+\index{Brick@{Brick}!value@{value}}
+\index{value@{value}!Brick@{Brick}}
+\doxysubsubsection{value}
+{\footnotesize\ttfamily int Brick\+::value \{\}}
+
+The value of points of the brick. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/brick.\+h\item 
+src/gui/brick.\+cpp\end{DoxyCompactItemize}

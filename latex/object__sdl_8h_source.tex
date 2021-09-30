@@ -1,0 +1,29 @@
+\doxysection{object\+\_\+sdl.\+h}
+\label{object__sdl_8h_source}\index{src/gui/object\_sdl.h@{src/gui/object\_sdl.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by carlo on 18/9/21.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef TECBREAKOUT\_OBJECT\_SDL\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define TECBREAKOUT\_OBJECT\_SDL\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}SDL2/SDL.h"{}}}
+\DoxyCodeLine{12 \textcolor{keyword}{class }ObjectSDL\{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} id;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{26     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} draw(SDL\_Renderer *renderer) = 0;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{32     \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} getId() \{\textcolor{keywordflow}{return} id;\}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{38     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setId(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id}) \{this-\/>\textcolor{keywordtype}{id} = id;\}}
+\DoxyCodeLine{39 \};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//TECBREAKOUT\_OBJECT\_SDL\_H}}
+
+\end{DoxyCode}

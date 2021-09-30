@@ -1,0 +1,89 @@
+\doxysection{Object\+SDL Class Reference}
+\label{class_object_s_d_l}\index{ObjectSDL@{ObjectSDL}}
+
+
+The interface to create a object in SDL2.  
+
+
+
+
+{\ttfamily \#include $<$object\+\_\+sdl.\+h$>$}
+
+Inheritance diagram for Object\+SDL\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_object_s_d_l}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \textbf{ draw} (SDL\+\_\+\+Renderer $\ast$renderer)=0
+\begin{DoxyCompactList}\small\item\em This method draw fot the object. \end{DoxyCompactList}\item 
+virtual int \textbf{ get\+Id} ()
+\begin{DoxyCompactList}\small\item\em Return the id tribute. \end{DoxyCompactList}\item 
+virtual void \textbf{ set\+Id} (int id)
+\begin{DoxyCompactList}\small\item\em Set the id tribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The interface to create a object in SDL2. 
+
+\begin{DoxyAuthor}{Author}
+Carlos A. Mata C. \texorpdfstring{$<$}{<}carlos.\+andres12001 @ gmail.\+com\texorpdfstring{$>$}{>} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_object_s_d_l_ae957c2b79e11ebf3829ff64fb55723ac}} 
+\index{ObjectSDL@{ObjectSDL}!draw@{draw}}
+\index{draw@{draw}!ObjectSDL@{ObjectSDL}}
+\doxysubsubsection{draw()}
+{\footnotesize\ttfamily virtual void Object\+SDL\+::draw (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+This method draw fot the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & renderer of the window. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \textbf{ Entity\+SDL} \doxyref{}{p.}{class_entity_s_d_l_aec371ecdd5737ab086bf73eafbebf387}, and \textbf{ Text\+SDL} \doxyref{}{p.}{class_text_s_d_l_a2e3da005d3e9144a8261af4589f85890}.
+
+\mbox{\label{class_object_s_d_l_ab0080891c913221e77a1b53071c957df}} 
+\index{ObjectSDL@{ObjectSDL}!getId@{getId}}
+\index{getId@{getId}!ObjectSDL@{ObjectSDL}}
+\doxysubsubsection{getId()}
+{\footnotesize\ttfamily virtual int Object\+SDL\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the id tribute. 
+
+\begin{DoxyReturn}{Returns}
+Return the id tribute. 
+\end{DoxyReturn}
+\mbox{\label{class_object_s_d_l_a9727897913abf4219a2c23d9ee981ea6}} 
+\index{ObjectSDL@{ObjectSDL}!setId@{setId}}
+\index{setId@{setId}!ObjectSDL@{ObjectSDL}}
+\doxysubsubsection{setId()}
+{\footnotesize\ttfamily virtual void Object\+SDL\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the id tribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Set the id tribute. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/object\+\_\+sdl.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\doxysection{Socket\+Client Class Reference}
+\label{class_socket_client}\index{SocketClient@{SocketClient}}
+
+
+{\ttfamily \#include $<$Socket\+Client.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Socket\+Client} ()
+\item 
+void \textbf{ set\+Server\+Socket} (int server\+Socket)
+\item 
+void \textbf{ set\+Ip\+Address} (string ip\+Address)
+\item 
+void \textbf{ set\+Message} (const char $\ast$msn)
+\item 
+void \textbf{ connect\+Server} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\label{class_socket_client_a032ab1d769ab63a3f594796b936780d9}} 
+int {\bfseries server\+Socket}
+\item 
+\mbox{\label{class_socket_client_a0e9212b3797b7f6c633df80d04914e4e}} 
+string {\bfseries ip\+Address}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class will be used to connect to a server from the client, it will also check open ports and sent message through the socket 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_socket_client_a80d1b7bfb8b4126d706981a80e05c78f}} 
+\index{SocketClient@{SocketClient}!SocketClient@{SocketClient}}
+\index{SocketClient@{SocketClient}!SocketClient@{SocketClient}}
+\doxysubsubsection{SocketClient()}
+{\footnotesize\ttfamily Socket\+Client\+::\+Socket\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is the constructor for the \doxyref{Socket\+Client}{p.}{class_socket_client} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_socket_client_a5991254bf615126f88ef3dd46dcc0133}} 
+\index{SocketClient@{SocketClient}!connectServer@{connectServer}}
+\index{connectServer@{connectServer}!SocketClient@{SocketClient}}
+\doxysubsubsection{connectServer()}
+{\footnotesize\ttfamily void Socket\+Client\+::connect\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method initialices the connection between the server and the client. \mbox{\label{class_socket_client_a0f4cca312bec117344aa48132d063103}} 
+\index{SocketClient@{SocketClient}!setIpAddress@{setIpAddress}}
+\index{setIpAddress@{setIpAddress}!SocketClient@{SocketClient}}
+\doxysubsubsection{setIpAddress()}
+{\footnotesize\ttfamily void Socket\+Client\+::set\+Ip\+Address (\begin{DoxyParamCaption}\item[{string}]{ip\+Address }\end{DoxyParamCaption})}
+
+The set\+Ip\+Address method is a setter for the ip\+Address variable that contains the ip in which the connection is going to take place 
+\begin{DoxyParams}{Parameters}
+{\em ip\+Address} & is the ip \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_socket_client_aa41e95fb973c4aa94bc018b86409655f}} 
+\index{SocketClient@{SocketClient}!setMessage@{setMessage}}
+\index{setMessage@{setMessage}!SocketClient@{SocketClient}}
+\doxysubsubsection{setMessage()}
+{\footnotesize\ttfamily void Socket\+Client\+::set\+Message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msn }\end{DoxyParamCaption})}
+
+Set\+Message is a method that receives a constant char$\ast$ that contains the message that we will sent to the server through the socket and the ip. 
+\begin{DoxyParams}{Parameters}
+{\em msn} & is the message that is going to be sent \\
+\hline
+\end{DoxyParams}
+\mbox{\label{class_socket_client_a1640034014dd1c821324dffc4f2eb5f0}} 
+\index{SocketClient@{SocketClient}!setServerSocket@{setServerSocket}}
+\index{setServerSocket@{setServerSocket}!SocketClient@{SocketClient}}
+\doxysubsubsection{setServerSocket()}
+{\footnotesize\ttfamily void Socket\+Client\+::set\+Server\+Socket (\begin{DoxyParamCaption}\item[{int}]{server\+Socket }\end{DoxyParamCaption})}
+
+This method is a setter for the server\+Socket variable that contains the socket server where the connection is going to take place. 
+\begin{DoxyParams}{Parameters}
+{\em server\+Socket} & is the socket \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/socket/Socket\+Client.\+h\item 
+src/socket/Socket\+Client.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\doxysection{Socket\+Client.\+h}
+\label{_socket_client_8h_source}\index{src/socket/SocketClient.h@{src/socket/SocketClient.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef TEC\_BREAKOUT\_SOCKETCLIENT\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define TEC\_BREAKOUT\_SOCKETCLIENT\_H}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <sys/types.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <netdb.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <pthread.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }SocketClient \{}
+\DoxyCodeLine{22 \textcolor{keyword}{public}:}
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} serverSocket;}
+\DoxyCodeLine{24     \textcolor{keywordtype}{string} ipAddress;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{29     SocketClient();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} setServerSocket(\textcolor{keywordtype}{int} serverSocket);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} setIpAddress(\textcolor{keywordtype}{string} ipAddress);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} setMessage(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* msn);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} connectServer();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{private}:}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keywordtype}{int} identifier;}
+\DoxyCodeLine{60     sockaddr\_in info;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{67     \textcolor{keyword}{static} \textcolor{keywordtype}{void}* listener(\textcolor{keywordtype}{void}* obj);}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
